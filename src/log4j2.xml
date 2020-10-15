@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="warn">
+<properties>
+	<!-- 输出路径(服务器上) -->
+	<!-- <property name="LOG_HOME">E:/apache-tomcat-9.0.38/WebAppLogs/link</property> -->
+	<property name="LOG_HOME">${sys:catalina.home}/WebAppLogs/link</property>
+	<!-- <property name="LOG_HOME">D:/WebAppLogs/link</property> -->
+</properties>
+<appenders>
+	<!-- 控制台日志输出 -->
+	<Console name="Console" target="SYSTEM_OUT">
+		<ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY" />
+		<PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} %-5level [%t] (%F:%L) - %msg%n" />
+	</Console>
+	
+	<!-- 输出日志文件，位置自动保存在项目根目录下的logs文件夹中 -->
+	<!-- Debug调试级别 -->
+	<!-- <File name="DebugLogFile" fileName="${LOG_HOME}/debug.log" append="false">
+		<Filters>
+			<ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL" />
+			<ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY" />
+		</Filters>
+		<PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} %-5level [%t] (%F:%L) - %msg%n"/>
+	</File> -->
+	<!-- Info信息级别 -->
+	<RollingFile name="InfoLogFile" fileName="${LOG_HOME}/info.log" filePattern="${LOG_HOME}/$${date:yyyy-MM}/info/info-%d{yyyy-MM-dd}-%i.log">
+		<Filters>
+			<ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL" />
+			<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" />
+		</Filters>
+		<PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} %-5level [%t] (%F:%L) - %msg%n"/>
+		<Policies>
+			<TimeBasedTriggeringPolicy/>
+        	<SizeBasedTriggeringPolicy size="3MB"/>
+		</Policies>
+		<!-- 默认最多同一文件夹下7个文件 -->
+		<DefaultRolloverStrategy max="10"/>
+	</RollingFile>
+	<!-- Warn警告级别 -->
+	<RollingFile name="WarnLogFile" fileName="${LOG_HOME}/warn.log" filePattern="${LOG_HOME}/$${date:yyyy-MM}/warn/warn-%d{yyyy-MM-dd}-%i.log">
+		<Filters>
+			<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL" />
+			<ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />
+		</Filters>
+		<PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} %-5level [%t] (%F:%L) - %msg%n"/>
+		<Policies>
+			<TimeBasedTriggeringPolicy/>
+        	<SizeBasedTriggeringPolicy size="1MB"/>
+		</Policies>
+		<DefaultRolloverStrategy max="10"/>
+	</RollingFile>
+	<!-- Error错误级别 -->
+	<RollingFile name="ErrorLogFile" fileName="${LOG_HOME}/error.log" filePattern="${LOG_HOME}/$${date:yyyy-MM}/error/error-%d{yyyy-MM-dd}-%i.log">
+		<Filters>
+			<ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL" />
+			<ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY" />
+		</Filters>
+		<PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} %-5level [%t] (%F:%L) - %msg%n"/>
+		<Policies>
+			<TimeBasedTriggeringPolicy/>
+        	<SizeBasedTriggeringPolicy size="1MB"/>
+		</Policies>
+		<DefaultRolloverStrategy max="10"/>
+	</RollingFile>
+	<!-- Fatal严重级别 -->
+	<RollingFile name="FatalLogFile" fileName="${LOG_HOME}/fatal.log" filePattern="${LOG_HOME}/$${date:yyyy-MM}/fatal/fatal-%d{yyyy-MM-dd}-%i.log">
+		<ThresholdFilter level="fatal" onMatch="ACCEPT" onMismatch="DENY" />
+		<PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} %-5level [%t] (%F:%L) - %msg%n"/>
+		<Policies>
+			<TimeBasedTriggeringPolicy/>
+        	<SizeBasedTriggeringPolicy size="1MB"/>
+		</Policies>
+		<DefaultRolloverStrategy max="10"/>
+	</RollingFile>
+</appenders>
+<loggers>
+	<root level="trace">
+		<appender-ref ref="Console" />
+		<!-- Debug日志不做记录 -->
+		<!-- <appender-ref ref="DebugLogFile" /> -->
+		<appender-ref ref="InfoLogFile" />
+		<appender-ref ref="WarnLogFile" />
+		<appender-ref ref="ErrorLogFile" />
+		<appender-ref ref="FatalLogFile" />
+	</root>
+</loggers>
+</configuration>
