@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>创建管理员</title>
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <style type="text/css">
@@ -14,6 +16,62 @@
     	background-size: cover;
 	}
 </style>
+</head>
+<body>
+	<div class="container">
+		<h3 class="text-center"
+			style="margin-top: 180px; margin-bottom: 20px;">创建新管理员</h3>
+		<form class="form-horizontal" method="post"
+			action="superAdmin?action=regist" onsubmit="return checkForm()">
+			<div class="form-group">
+				<div class="col-md-offset-4 col-md-3">
+					<input type="text" class="form-control" id="adminName"
+						name="adminName" onfocus="showAdminNameHelpInfo()"
+						onblur="checkAdminName()" placeholder="用户名">
+				</div>
+				<span id="checkAdminNameInfo" class="help-block"></span>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-4 col-md-3">
+					<input type="text" class="form-control" id="adminRealName"
+						name="adminRealName" onfocus="showAdminRealNameHelpInfo()"
+						onblur="checkAdminRealName()" placeholder="姓名">
+				</div>
+				<span id="checkAdminRealNameInfo" class="help-block"></span>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-4 col-md-3">
+					<input type="text" class="form-control" id="adminPhoneNum"
+						name="adminPhoneNum" onfocus="showAdminPhoneNumHelpInfo()"
+						onblur="checkAdminPhoneNum()" placeholder="电话号码">
+				</div>
+				<span id="checkAdminPhoneNumInfo" class="help-block"></span>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-4 col-md-3">
+					<input type="password" class="form-control" id="password1"
+						name="password1" onfocus="showAdminPassword1HelpInfo()"
+						onblur="checkAdminPassword()" placeholder="密码">
+				</div>
+				<span id="checkAdminPassword1Info" class="help-block"></span>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-4 col-md-3">
+					<input type="password" class="form-control" id="password2"
+						name="password2" onfocus="showAdminPassword2HelpInfo()"
+						onblur="checkAdminPassword()" placeholder="确认密码">
+				</div>
+				<span id="checkAdminPassword2Info" class="help-block"></span>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-4 col-md-3">
+					<button type="submit" class="btn btn-primary btn-block">注册</button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+
 <script type="text/javascript">
 
 	function showAdminNameHelpInfo() {
@@ -206,49 +264,6 @@
 		else return false;
 	}
 </script>
-</head>
-<body>
-
-<h3 class="text-center" style="margin-top:180px; margin-bottom:20px;">创建新管理员</h3>
-<form class="form-horizontal" method="post" action="superAdmin?action=regist" onsubmit="return checkForm()">
-	<div class="form-group">
-		<div class="col-md-offset-5 col-md-2">
-			<input type="text" class="form-control" id="adminName" name="adminName" onfocus="showAdminNameHelpInfo()" onblur="checkAdminName()" placeholder="用户名">
-		</div>
-		<span id="checkAdminNameInfo" class="help-block"></span>
-	</div>
-	<div class="form-group">
-		<div class="col-md-offset-5 col-md-2">
-			<input type="text" class="form-control" id="adminRealName" name="adminRealName" onfocus="showAdminRealNameHelpInfo()" onblur="checkAdminRealName()" placeholder="姓名">
-		</div>
-		<span id="checkAdminRealNameInfo" class="help-block"></span>
-	</div>
-	<div class="form-group">
-		<div class="col-md-offset-5 col-md-2">
-			<input type="text" class="form-control" id="adminPhoneNum" name="adminPhoneNum" onfocus="showAdminPhoneNumHelpInfo()" onblur="checkAdminPhoneNum()" placeholder="电话号码">
-		</div>
-		<span id="checkAdminPhoneNumInfo" class="help-block"></span>
-	</div>
-	<div class="form-group">
-		<div class="col-md-offset-5 col-md-2">
-			<input type="password" class="form-control" id="password1" name="password1" onfocus="showAdminPassword1HelpInfo()" onblur="checkAdminPassword()" placeholder="密码">
-		</div>
-		<span id="checkAdminPassword1Info" class="help-block"></span>
-	</div>
-	<div class="form-group">
-		<div class="col-md-offset-5 col-md-2">
-			<input type="password" class="form-control" id="password2" name="password2" onfocus="showAdminPassword2HelpInfo()" onblur="checkAdminPassword()" placeholder="确认密码">
-		</div>
-		<span id="checkAdminPassword2Info" class="help-block"></span>
-	</div>
-	<div class="form-group">
-		<div class="col-md-offset-5 col-md-2">
-			<button type="submit" class="btn btn-primary btn-block">注册</button>
-		</div>
-	</div>
-
-</form>
-
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 </body>
