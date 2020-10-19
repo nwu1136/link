@@ -19,38 +19,50 @@
 </head>
 <body>
 	<div class="container">
-		<h3 class="text-center"
-			style="margin-top: 150px; margin-bottom: 20px;">管理员登录</h3>
-		<form class="form-horizontal" action="admin?action=login"
-			method="post">
-			<div class="form-group">
-				<div class="col-md-offset-4 col-md-3 input-group">
-					<div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
-					<input type="text" class="form-control" id="username" name="username"
-						placeholder="管理员账号" />
+		<div style="margin-top: 150px;"></div>
+		<div class="col-md-offset-4 col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="text-center">管理员登录</h4>
+				</div>
+				<div class="panel-body">
+					<form class="form-horizontal" action="admin?action=login"
+						method="post">
+						<div class="form-group">
+							<div class="col-md-offset-1 col-md-10 input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								</div>
+								<input type="text" class="form-control" id="username"
+									name="username" placeholder="管理员账号" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-offset-1 col-md-10 input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+								</div>
+								<input type="password" class="form-control" id="password"
+									name="password" placeholder="管理员密码" />
+							</div>
+						</div>
+						<div class="form-group form-inline">
+							<div class="col-md-offset-1 col-md-4 input-group">
+								<input type="text" class="form-control" id="validatecode"
+									name="validateCode" placeholder="验证码">
+							</div>
+							<span><img title="看不清？点击换一张呗" src="ValidateCode"
+								onclick="this.src='ValidateCode?num='+Math.random()" /></span>
+						</div>
+						<div class="form-group">
+							<div class="col-md-offset-1 col-md-10 input-group">
+								<button type="submit" class="btn btn-primary btn-block">登录</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
-			<div class="form-group">
-				<div class="col-md-offset-4 col-md-3 input-group">
-					<div class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></div>
-					<input type="password" class="form-control" id="password" name="password"
-						placeholder="管理员密码" />
-				</div>
-			</div>
-			<div class="form-group form-inline">
-				<div class="col-md-offset-4 col-md-1 input-group">
-					<input type="text" class="form-control" id="validatecode" name="validateCode"
-						placeholder="验证码">
-				</div>
-				<span><img title="看不清？点击换一张呗" src="ValidateCode"
-						onclick="this.src='ValidateCode?num='+Math.random()" /></span>
-			</div>
-			<div class="form-group">
-				<div class="col-md-offset-4 col-md-3 input-group">
-					<button type="submit" class="btn btn-primary btn-block">登录</button>
-				</div>
-			</div>
-		</form>
+		</div>
 	</div>
 
 	<script src="../js/jquery.min.js"></script>
