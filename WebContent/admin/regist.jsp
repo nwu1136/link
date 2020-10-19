@@ -76,7 +76,7 @@
 
 	function showAdminNameHelpInfo() {
 		checkAdminNameInfo.style.color="blue";
-		checkAdminNameInfo.innerHTML="6-10位字母和数字的组合，并且以字母开头";
+		checkAdminNameInfo.innerHTML="6-12位字母和数字的组合，并且以字母开头";
 	}
 	
 	function showAdminRealNameHelpInfo() {
@@ -120,8 +120,8 @@
 			return;
 		}
 		
-		// 数字字母组合，字母开头，不区分大小写，6-10位
-		var reg = /^[a-z](?![a-z]+$)[a-z0-9]{5,9}$/i;
+		// 数字字母组合，字母开头，不区分大小写，6-12位
+		var reg = /^[a-z](?![a-z]+$)[a-z0-9]{5,11}$/i;
 		if(!reg.test(adminName)) {
 			checkAdminNameInfo.style.color = "red";
 			checkAdminNameInfo.innerHTML = "用户名格式错误";
