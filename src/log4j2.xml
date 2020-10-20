@@ -13,7 +13,7 @@
 		<PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} %-5level [%t] (%F:%L) - %msg%n" />
 	</Console>
 	
-	<!-- 输出日志文件，位置自动保存在项目根目录下的logs文件夹中 -->
+	<!-- 输出日志文件，位置自动保存在指定目录下 -->
 	<!-- Debug调试级别 -->
 	<!-- <File name="DebugLogFile" fileName="${LOG_HOME}/debug.log" append="false">
 		<Filters>
