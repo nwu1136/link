@@ -33,7 +33,7 @@
 		border-collapse: collapse;
 		letter-spacing: 1px;
 		font-size: 0.9em;
-		width: 60%;
+		width: 70%;
 	}
 	table th, td {
 		border: 1px solid rgb(190,190,190);
