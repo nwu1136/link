@@ -10,7 +10,7 @@ import java.util.Random;
 public class ValidateCode {
 
 	private static final int WIDTH = 120;
-	private static final int HEIGHT = 30;
+	private static final int HEIGHT = 32;
 	private static final int LINE_SIZE = 5; // 干扰线数量
 	private static final int CHAR_SIZE = 4; // 字符数量
 
