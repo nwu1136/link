@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <style type="text/css">
 	body {
-		background-image: url("../images/nwu02.jpg");
+		background-image: url("../images/nwu01.jpg");
     	background-repeat: no-repeat;
     	background-attachment: fixed;
     	background-size: cover;
@@ -51,7 +51,7 @@
 								style="color: red;"></span>
 						</div>
 						<div class="form-group col-md-offset-3 col-md-6">
-							<button type="submit" class="btn btn-primary btn-block">提交</button>
+							<button type="submit" class="btn btn-primary btn-block">确认修改</button>
 						</div>
 					</form>
 				</div>

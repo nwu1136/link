@@ -51,7 +51,7 @@
 								<input type="text" class="form-control" id="validatecode"
 									name="validateCode" placeholder="验证码">
 							</div>
-							<span><img title="看不清？点击换一张呗" src="ValidateCode"
+							<span style="margin-left:10px;"><img title="看不清？点击换一张呗" src="ValidateCode"
 								onclick="this.src='ValidateCode?num='+Math.random()" /></span>
 						</div>
 						<div class="form-group">
