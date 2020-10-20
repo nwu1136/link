@@ -128,6 +128,7 @@
 				<a href='javascript:document.getElementById("adminIDForm${admin.adminID}").submit();'>修改密码</a>
 				<form id="adminIDForm${admin.adminID}" method="post" action="modifyAdminPassword.jsp">
 					<input type="hidden" name="adminID" value="${admin.adminID}">
+					<input type="hidden" name="adminName" value="${admin.adminName}">
 				</form>
 			</td>
 			<td>

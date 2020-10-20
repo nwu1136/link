@@ -18,6 +18,7 @@
 <body>
 <%
 	String adminID=request.getParameter("adminID");
+	String adminName=request.getParameter("adminName");
 %>
 
 	<div class="container">
@@ -25,7 +26,7 @@
 		<div class="col-md-offset-4 col-md-4">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<h3 class="text-center">修改此管理员密码</h3>
+					<h3 class="text-center">修改管理员&nbsp;<i><strong><%=adminName%></strong></i>&nbsp;的密码</h3>
 				</div>
 				<div class="panel-body">
 					<form method="post" action="superAdmin?action=modifyAdminPassword"
