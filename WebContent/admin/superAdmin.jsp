@@ -9,11 +9,6 @@
 <meta charset="UTF-8">
 <title>超级管理员</title>
 <style type="text/css">
-	/* body {
-		background-image: url("../images/background.jpg");
-		background-repeat: no-repeat;
-		background-size: cover;
-	} */
 	ul {
 		float:left;
 		margin:0px 45px 0px 5%;
