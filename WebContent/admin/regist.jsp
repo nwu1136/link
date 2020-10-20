@@ -19,10 +19,14 @@
 </head>
 <body>
 	<div class="container">
-		<h3 class="text-center"
-			style="margin-top: 180px; margin-bottom: 20px;">创建新管理员</h3>
+		<div style="margin-top: 150px;"></div>
 		<form class="form-horizontal" method="post"
 			action="superAdmin?action=regist" onsubmit="return checkForm()">
+			<div class="form-group">
+				<div class="col-md-offset-4 col-md-3">
+					<h3 class="text-center">创建新管理员</h3>
+				</div>
+			</div>
 			<div class="form-group">
 				<div class="col-md-offset-4 col-md-3">
 					<input type="text" class="form-control" id="adminName"
