@@ -6,6 +6,58 @@
 <meta charset="UTF-8">
 <title>管理员密码修改</title>
 <link rel="stylesheet" href="../css/bootstrap.min.css">
+<style type="text/css">
+	body {
+		background-image: url("../images/nwu02.jpg");
+    	background-repeat: no-repeat;
+    	background-attachment: fixed;
+    	background-size: cover;
+	}
+</style>
+</head>
+<body>
+<%
+	String adminID=request.getParameter("adminID");
+%>
+
+	<div class="container">
+		<div style="margin-top: 200px;"></div>
+		<div class="col-md-offset-4 col-md-4">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3 class="text-center">修改此管理员密码</h3>
+				</div>
+				<div class="panel-body">
+					<form method="post" action="superAdmin?action=modifyAdminPassword"
+						onsubmit="return checkNewPassword()">
+						<input type="hidden" id="adminID" name="adminID"
+							value="<%=adminID%>">
+						<div id="p1" class="form-group">
+							<label>输入新密码</label> <input type="password" class="form-control"
+								id="password1" name="password1"
+								onfocus="showPassword1HelpInfo()" onblur="checkNewPassword()">
+							<span id="p1s" class="" aria-hidden="true"></span>
+							<span id="password1HelpInfo" class="help-block"
+								style="color: red;"></span>
+							
+						</div>
+						<div id="p2" class="form-group">
+							<label>确认新密码</label> <input type="password" class="form-control"
+								id="password2" name="password2"
+								onfocus="showPassword2HelpInfo()" onblur="checkNewPassword()">
+							<span id="p2s" class="" aria-hidden="true"></span>
+							<span id="password2HelpInfo" class="help-block"
+								style="color: red;"></span>
+						</div>
+						<div class="form-group col-md-offset-3 col-md-6">
+							<button type="submit" class="btn btn-primary btn-block">提交</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 <script type="text/javascript">
 
 	window.onload = function() {
@@ -86,59 +138,7 @@
 		return true;
 	}
 </script>
-<style type="text/css">
-	body {
-		background-image: url("../images/nwu02.jpg");
-    	background-repeat: no-repeat;
-    	background-attachment: fixed;
-    	background-size: cover;
-	}
-</style>
-</head>
-<body>
-<%
-	String adminID=request.getParameter("adminID");
-%>
-
-	<div class="container">
-		<div style="margin-top: 200px;"></div>
-		<div class="col-md-offset-4 col-md-4">
-			<div class="panel panel-danger">
-				<div class="panel-heading">
-					<h3 class="text-center">修改此管理员密码</h3>
-				</div>
-				<div class="panel-body">
-					<form method="post" action="superAdmin?action=modifyAdminPassword"
-						onsubmit="return checkNewPassword()">
-						<input type="hidden" id="adminID" name="adminID"
-							value="<%=adminID%>">
-						<div id="p1" class="form-group">
-							<label>输入新密码</label> <input type="password" class="form-control"
-								id="password1" name="password1"
-								onfocus="showPassword1HelpInfo()" onblur="checkNewPassword()">
-							<span id="p1s" class="" aria-hidden="true"></span>
-							<span id="password1HelpInfo" class="help-block"
-								style="color: red;"></span>
-							
-						</div>
-						<div id="p2" class="form-group">
-							<label>确认新密码</label> <input type="password" class="form-control"
-								id="password2" name="password2"
-								onfocus="showPassword2HelpInfo()" onblur="checkNewPassword()">
-							<span id="p2s" class="" aria-hidden="true"></span>
-							<span id="password2HelpInfo" class="help-block"
-								style="color: red;"></span>
-						</div>
-						<div class="form-group col-md-offset-3 col-md-6">
-							<button type="submit" class="btn btn-primary btn-block">提交</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
