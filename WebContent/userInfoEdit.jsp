@@ -9,12 +9,9 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>个人信息维护</title>
-    <link rel="stylesheet" href="../../helper/reset.css" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-      crossorigin="anonymous"
+      href="css/bootstrap.min.css"
     />
 
 	<style>
@@ -196,60 +193,56 @@ body {
       </div>
     </div>
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
-      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous"
-      
-    >
-//用户名校验
-$(function(){
-		$(":input[name='username']").blur(function(){
-			var username = $(this).val();
-			if(username.length<3 || username.length>30){
-				if($('.form-group:first').hasClass('has-success')){
-    				$('.form-group:first').removeClass('has-success');
-    			}
-    			$('.form-group:first').addClass('has-error');
-    			$('.inputError:first').css('display','inline-block');
-    			$('#send-email').addClass('disabled');
-			}else{
-				if($('.form-group:first').hasClass('has-error')){
-    				$('.form-group:first').removeClass('has-error');
-    				$('.inputError:first').css('display','none');
-    			}
-    			$('#send-email').removeClass('disabled');
-    			$('.form-group:first').addClass('has-success');
-			}
+    <script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		//用户名校验
+		$(function() {
+			$(":input[name='username']").blur(function() {
+				var username = $(this).val();
+				if (username.length<3 || username.length>30) {
+					if ($('.form-group:first').hasClass('has-success')) {
+						$('.form-group:first').removeClass('has-success');
+					}
+					$('.form-group:first').addClass('has-error');
+					$('.inputError:first').css('display', 'inline-block');
+					$('#send-email').addClass('disabled');
+				} else {
+					if ($('.form-group:first').hasClass('has-error')) {
+						$('.form-group:first').removeClass('has-error');
+						$('.inputError:first').css('display', 'none');
+					}
+					$('#send-email').removeClass('disabled');
+					$('.form-group:first').addClass('has-success');
+				}
+			});
 		});
-	});
-	// 邮箱格式校验
-	$(function(){
-  		$(":input[name='email']").blur(function(){
-   			var email = $(this).val();
-   			var reg = /\w+[@]{1}\w+[.]\w+/;
-   			if(reg.test(email)){
-    			//$(":input[name='check']").val("email合法");
-    			if($('.form-group:last').hasClass('has-error')){
-    				$('.form-group:last').removeClass('has-error');
-    				$('.inputError:last').css('display','none');
-    			}
-    			$('.form-group:last').addClass('has-success');
-    			$('#send-email').removeClass('disabled');
-   			}else{
-    			//$(":input[name='check']").val("请输入正确的email地址");
-    			if($('.form-group:last').hasClass('has-success')){
-    				$('.form-group:last').removeClass('has-success');
-    			}
-    			$('.form-group:last').addClass('has-error');
-    			$('.inputError:last').css('display','inline-block');
-    			$('#send-email').addClass('disabled');
-   			}
-  		});s
- 	});
+		// 邮箱格式校验
+		$(function() {
+			$(":input[name='email']").blur(function() {
+				var email = $(this).val();
+				var reg = /\w+[@]{1}\w+[.]\w+/;
+				if (reg.test(email)) {
+					//$(":input[name='check']").val("email合法");
+					if ($('.form-group:last').hasClass('has-error')) {
+						$('.form-group:last').removeClass('has-error');
+						$('.inputError:last').css('display', 'none');
+					}
+					$('.form-group:last').addClass('has-success');
+					$('#send-email').removeClass('disabled');
+				} else {
+					//$(":input[name='check']").val("请输入正确的email地址");
+					if ($('.form-group:last').hasClass('has-success')) {
+						$('.form-group:last').removeClass('has-success');
+					}
+					$('.form-group:last').addClass('has-error');
+					$('.inputError:last').css('display', 'inline-block');
+					$('#send-email').addClass('disabled');
+				}
+			});
+			s
+		});
+	</script>
 
-    </script>
-	
-  </body>
+</body>
 </html>

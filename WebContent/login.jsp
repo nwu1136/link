@@ -4,7 +4,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <title>登录</title>
+    <title>用户登录</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 	<style>
 		* {
@@ -120,7 +120,7 @@ body {
         <div class="wrap">
           
            问题反馈：15129056163
-            <a href="#">登录</a>
+            <a href="#">用户登录</a>
         </div>
       </div>
       <!-- 导航栏 -->
@@ -191,8 +191,8 @@ body {
                       id="captcha"
                       placeholder="验证码"
                     /><img
-                      src="https://fuel.e-chnenergy.com/captcha.svl"
-                      alt=""
+                      src="images/default.jpg"
+                      alt="" width="120px" height="32px"
                     />
                   </div>
                 </div>
@@ -308,16 +308,16 @@ $submit.on("click", function () {
         //成功
         console.log(result);
         if (result.code === 200) {
-          console.log(result);
+          // console.log(result);
           console.log("成功");
         } else {
-          console.log(result);
+          // console.log(result);
           console.log("失败");
         }
       },
       error: function (result) {
         //失败
-        console.log(result);
+        // console.log(result);
         console.log("异常");
       },
     });

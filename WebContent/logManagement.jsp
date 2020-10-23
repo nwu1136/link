@@ -4,123 +4,131 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>日志管理</title>
-    <link rel="stylesheet" href="../../helper/reset.css" />
-    <link
-      rel="stylesheet"
-      href="css/bootstrap.min.css"
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>日志管理</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
 
-    />
-
-	<style>
-		* {
-	  margin: 0px;
-	  padding: 0px;
-	  box-sizing: border-box;
-	}
-	ul,
-	ol {
-	  list-style: none;
-	}
-	*::after,
-	*::before {
-	  display: block;
-	  box-sizing: border-box;
-	}
-		* {
-  padding: 0;
-  margin: 0;
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
 }
+
+ul, ol {
+	list-style: none;
+}
+
+*::after, *::before {
+	display: block;
+	box-sizing: border-box;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
 body {
-  background-color: #f9f9f9;
-}
-.header {
-  width: 100%;
-  height: 150px;
-  background-color: #fff;
-}
-.wrap {
-  width: 68%;
-  margin: 0 auto;
-  position: relative;
-}
-.wrap-nav {
-  height: 100px;
-}
-.top {
-  width: 100%;
-  height: 50px;
-  background-color: #333333;
-  line-height: 50px;
-  color: #fff;
-}
-.top > .wrap > a {
-  color: #fff;
-}
-.logo {
-  display: inline-block;
-			position: absolute;
-			height:50px;
-			align-items:center;
-			top:12px;
-}
-.nav {
-  width: 100%;
-  height: 100px;
-}
-.nav > .wrap > .nav-item {
-  float: right;
-  height: 40px;
-  position: absolute;
-  top: 30px;
-  right: 0px;
-  /*line-height: 100px;*/
-}
-.nav > .wrap > .nav-item > a {
-  display: inline-block;
-  text-decoration: none;
-  width: 100px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  color: #333333;
-}
-.nav > .wrap > .nav-item > a:hover {
-  border: 1px solid;
-  border-radius: 100px;
-  border-left-color: #3287bd;
-  border-right-color: #4eb564;
-  border-top-color: #4eb564;
-  border-bottom-color: #3287bd;
-}
-.nav-current-item {
-  border: 1px solid;
-  border-radius: 100px;
-  border-left-color: #3287bd;
-  border-right-color: #4eb564;
-  border-top-color: #4eb564;
-  border-bottom-color: #3287bd;
-}
-.footer {
-  background: #333333;
-  padding: 1em 0;
-  color: #fff;
-}
-.footer > .content {
-  justify-content: center;
-  align-items: center;
-}
-.footer > .content > p {
-  margin: 0 auto;
-  text-align: center;
+	background-color: #f9f9f9;
 }
 
-	</style>
-  </head>
+.header {
+	width: 100%;
+	height: 150px;
+	background-color: #fff;
+}
+
+.wrap {
+	width: 68%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.wrap-nav {
+	height: 100px;
+}
+
+.top {
+	width: 100%;
+	height: 50px;
+	background-color: #333333;
+	line-height: 50px;
+	color: #fff;
+}
+
+.top>.wrap>a {
+	color: #fff;
+}
+
+.logo {
+	display: inline-block;
+	position: absolute;
+	height: 50px;
+	align-items: center;
+	top: 12px;
+}
+
+.nav {
+	width: 100%;
+	height: 100px;
+}
+
+.nav>.wrap>.nav-item {
+	float: right;
+	height: 40px;
+	position: absolute;
+	top: 30px;
+	right: 0px;
+	/*line-height: 100px;*/
+}
+
+.nav>.wrap>.nav-item>a {
+	display: inline-block;
+	text-decoration: none;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #333333;
+}
+
+.nav>.wrap>.nav-item>a:hover {
+	border: 1px solid;
+	border-radius: 100px;
+	border-left-color: #3287bd;
+	border-right-color: #4eb564;
+	border-top-color: #4eb564;
+	border-bottom-color: #3287bd;
+}
+
+.nav-current-item {
+	border: 1px solid;
+	border-radius: 100px;
+	border-left-color: #3287bd;
+	border-right-color: #4eb564;
+	border-top-color: #4eb564;
+	border-bottom-color: #3287bd;
+}
+
+.footer {
+	background: #333333;
+	padding: 1em 0;
+	color: #fff;
+}
+
+.footer>.content {
+	justify-content: center;
+	align-items: center;
+}
+
+.footer>.content>p {
+	margin: 0 auto;
+	text-align: center;
+}
+</style>
+</head>
   <body>
     <div class="header">
       

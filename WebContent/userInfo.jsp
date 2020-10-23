@@ -9,10 +9,9 @@
                                      initial-scale=1.0, 
                                      maximum-scale=1.0, 
                                      user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<title>用户信息</title>
 	<style type="text/css">
 		*{
@@ -179,11 +178,9 @@
 			<img src="images/Logo.png" class="logo"/>
 			<!-- 导航栏条目 -->
 			<div class="nav-item">
-				<a href="#">首页</a>
-				<a href="#">联系人</a>
-				<a href="logManagement.jsp">日志</a>
-				<a href="#">管理</a>
-				<a href="userInfo.jsp" class="nav-current-item">用户信息</a>
+				<a href="#">联系人管理</a>
+				<a href="logManagement.jsp">日志管理</a>
+				<a href="userInfo.jsp" class="nav-current-item">我的信息</a>
 			</div>
 			</div>
 	</nav>
@@ -266,7 +263,7 @@ document.getElementById("oInput").addEventListener("change",function(e){
 		render.onloadend = function(){
 		}
 	});
-	用户名校验
+	// 用户名校验
 	$(function(){
 		$(":input[name='username']").blur(function(){
 			var username = $(this).val();
