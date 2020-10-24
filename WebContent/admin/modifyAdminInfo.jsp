@@ -5,6 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>管理员信息修改</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<style type="text/css">
+	body {
+		background-image: url("../images/sky02.jpg");
+    	background-repeat: no-repeat;
+    	background-attachment: fixed;
+    	background-size: cover;
+	}
+</style>
 <script type="text/javascript">
 	
 	// 如果是拼参进来这个页面，而不是从superAdmin.jsp携带数据跳转过来的（页面是没数据的）
@@ -180,23 +189,67 @@
 	String[] admin=request.getParameterValues("admin");
 	pageContext.setAttribute("admin", admin);
 %>
+	<div class="container">
+		<div style="font-size: 18px; margin: 100px 0px 50px 0px;">
+			<div style="font-size: 24px; color: blue; margin:10px 0px;">当前管理员信息：</div>
+			<dl class="dl-horizontal">
+				<dt>用户名：</dt>
+				<dd>
+					<span id="oldAdminName">${admin[1]}</span>
+				</dd>
+				<dt>姓名：</dt>
+				<dd>
+					<span id="oldAdminRealName">${admin[2]}</span>
+				</dd>
+				<dt>电话号码：</dt>
+				<dd>
+					<span id="oldAdminPhoneNum">${admin[3]}</span>
+				</dd>
+			</dl>
+		</div>
 
-当前管理员信息：
-<ul>
-<li>用户名：<span id="oldAdminName">${admin[1]}</span></li>
-<li>姓名：<span id="oldAdminRealName">${admin[2]}</span></li>
-<li>电话号码：<span id="oldAdminPhoneNum">${admin[3]}</span></li>
-</ul>
+		<form class="form-horizontal" method="post"
+			action="superAdmin?action=modifyAdminInfo"
+			onsubmit="return checkForm()">
+			<div class="form-group">
+				<div class="text-left" style="font-size: 24px; color: blue;">修改此管理员信息：</div>
+			</div>
+			<input type="hidden" id="adminID" name="adminID" value="${admin[0]}">
+			<div class="form-group">
+				<label for="adminName" class="col-md-2 control-label text-right" style="padding-right:0px;">用户名：</label>
+				<div class="col-md-3">
+					<input type="text" class="form-control" id="adminName"
+						name="adminName" onblur="checkAdminName()" value="${admin[1]}">
+				</div>
+				<span id="checkAdminNameInfo" class="help-block"></span>
+			</div>
+			<div class="form-group">
+				<label for="adminRealName" class="col-md-2 control-label text-right" style="padding-right:0px;">姓名：</label>
+				<div class="col-md-3">
+					<input type="text" class="form-control" id="adminRealName"
+						name="adminRealName" onblur="checkAdminRealName()"
+						value="${admin[2]}">
+				</div>
+				<span id="checkAdminRealNameInfo" class="help-block"></span>
+			</div>
+			<div class="form-group">
+				<label for="adminPhoneNum" class="col-md-2 control-label text-right" style="padding-right:0px;">电话号码：</label>
+				<div class="col-md-3">
+					<input type="text" class="form-control" id="adminPhoneNum"
+						name="adminPhoneNum" onblur="checkAdminPhoneNum()"
+						value="${admin[3]}">
+				</div>
+				<span id="checkAdminPhoneNumInfo" class="help-block"></span>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<button type="submit" class="btn btn-primary">确认修改</button>
+				</div>
+			</div>
+		</form>
+	</div>
 
-修改此管理员信息：
-<form method="post" action="superAdmin?action=modifyAdminInfo" onsubmit="return checkForm()">
-	<input type="hidden" id="adminID" name="adminID" value="${admin[0]}">
-	用户名：<input type="text" id="adminName" name="adminName" onblur="checkAdminName()" value="${admin[1]}"><span id="checkAdminNameInfo"></span><br>
-	姓名：<input type="text" id="adminRealName" name="adminRealName" onblur="checkAdminRealName()" value="${admin[2]}"><span id="checkAdminRealNameInfo"></span><br>
-	电话号码：<input type="text" id="adminPhoneNum" name="adminPhoneNum" onblur="checkAdminPhoneNum()" value="${admin[3]}"><span id="checkAdminPhoneNumInfo"></span><br>
-	<input type="submit" value="提交">
-</form>
-<br><br><br>
-
+	<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
