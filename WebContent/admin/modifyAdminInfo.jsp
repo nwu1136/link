@@ -190,7 +190,7 @@
 	pageContext.setAttribute("admin", admin);
 %>
 	<div class="container">
-		<div style="font-size: 18px; margin: 100px 0px 50px 0px;">
+		<div style="font-size: 16px; margin: 100px 0px 50px 0px;">
 			<div style="font-size: 24px; color: blue; margin:10px 0px;">当前管理员信息：</div>
 			<dl class="dl-horizontal">
 				<dt>用户名：</dt>

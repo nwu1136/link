@@ -26,7 +26,7 @@
 					<h4 class="text-center">管理员登录</h4>
 				</div>
 				<div class="panel-body">
-					<form class="form-horizontal" action="admin?action=login"
+					<form class="form-horizontal" action="login"
 						method="post">
 						<div class="form-group">
 							<div class="col-md-offset-1 col-md-10 input-group">

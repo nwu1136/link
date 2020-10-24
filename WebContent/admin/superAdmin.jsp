@@ -76,7 +76,7 @@
 %>
 
 <div style="float:right; width:100%; margin-bottom: 5px;">
-	<div style="float:right; margin-right:15px;"><a href="admin?action=logout">[退出]</a></div>
+	<div style="float:right; margin-right:15px;"><a href="superAdmin?action=logout">[退出]</a></div>
 	<div style="float:right; margin-right:5px;"><a href="modifySuperAdminPassword.jsp">[修改密码]</a></div>
 	<div style="float:right; margin-right:25px;">当前用户：<span style="color:red;">超级管理员</span></div>
 </div>

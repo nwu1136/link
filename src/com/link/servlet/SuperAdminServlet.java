@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -60,6 +61,9 @@ public class SuperAdminServlet extends HttpServlet {
 				break;
 			case "regist":
 				regist(req, resp);
+				break;
+			case "logout":
+				logout(req, resp);
 				break;
 			default:
 				break;
@@ -344,7 +348,7 @@ public class SuperAdminServlet extends HttpServlet {
 		}
 
 		Admin admin = new Admin(null, adminName, password1, adminRealName, adminPhoneNum, null);
-		logger.info("regist new admin. request params: " + admin);
+		logger.info("regist new admin, request params: " + admin);
 
 		boolean ret = adminService.regist(admin);
 		if (ret) {
@@ -361,5 +365,11 @@ public class SuperAdminServlet extends HttpServlet {
 			out.print("location.href='regist.jsp';");
 			out.print("</script>");
 		}
+	}
+
+	private void logout(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		HttpSession session = req.getSession();
+		session.invalidate();
+		resp.sendRedirect("login.jsp");
 	}
 }
