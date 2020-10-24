@@ -16,6 +16,23 @@
     	background-size: cover;
 	}
 </style>
+<script type="text/javascript">
+
+	function checkForm() {
+		var username=document.getElementById("username").value;
+		var password=document.getElementById("password").value;
+		var validatecode=document.getElementById("validatecode").value;
+		// console.log(username);
+		// console.log(password);
+		// console.log(validatecode);
+		
+		if(username==""||password==""||validatecode=="") {
+			alert("有未填写项！");
+			return false;
+		}
+		return true;
+	}
+</script>
 </head>
 <body>
 	<div class="container">
@@ -27,7 +44,7 @@
 				</div>
 				<div class="panel-body">
 					<form class="form-horizontal" action="login"
-						method="post">
+						method="post" onsubmit="return checkForm()">
 						<div class="form-group">
 							<div class="col-md-offset-1 col-md-10 input-group">
 								<div class="input-group-addon">

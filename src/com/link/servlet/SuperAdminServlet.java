@@ -245,7 +245,8 @@ public class SuperAdminServlet extends HttpServlet {
 
 		int adminID = Integer.parseInt(req.getParameter("adminID"));
 		String adminName = req.getParameter("adminName");
-		System.out.println(adminID + " " + adminName);
+		logger.info("check admin name is unique for modify? request params: adminID = {}, adminName = {}", adminID,
+				adminName);
 
 		boolean isUnique = adminService.checkAdminNameIsUniqueForModify(adminID, adminName);
 
@@ -277,11 +278,11 @@ public class SuperAdminServlet extends HttpServlet {
 		admin.setAdminName(adminName);
 		admin.setAdminRealName(adminRealName);
 		admin.setAdminPhoneNum(adminPhoneNum);
-		System.out.println("修改管理员信息：" + admin);
+		logger.info("modify admin info: " + admin);
 
 		boolean ret = adminService.modifyAdminInfoByAdminID(admin);
 		if (ret) {
-			System.out.println("管理员信息修改成功！");
+			logger.info("admin info modified successfully");
 			out.print("<script type='text/javascript'>");
 			out.print("alert('管理员信息修改成功！');");
 			out.print("location.href='superAdmin.jsp';");

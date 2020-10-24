@@ -15,6 +15,21 @@
 	}
 </style>
 <script type="text/javascript">
+
+	function showAdminNameHelpInfo() {
+		checkAdminNameInfo.style.color="blue";
+		checkAdminNameInfo.innerHTML="6-12位字母和数字的组合，并且以字母开头";
+	}
+	
+	function showAdminRealNameHelpInfo() {
+		checkAdminRealNameInfo.style.color="blue";
+		checkAdminRealNameInfo.innerHTML="用户真实姓名，中文名最长10位，英文名最长20位";
+	}
+	
+	function showAdminPhoneNumHelpInfo() {
+		checkAdminPhoneNumInfo.style.color="blue";
+		checkAdminPhoneNumInfo.innerHTML="11位手机号码";
+	}
 	
 	// 如果是拼参进来这个页面，而不是从superAdmin.jsp携带数据跳转过来的（页面是没数据的）
 	// 就跳到superAdmin.jsp
@@ -49,25 +64,26 @@
 		
 		if(adminName==oldAdminName) {
 			checkAdminNameInfo.style.color="blue";
-			checkAdminNameInfo.style.fontSize="";
-			checkAdminNameInfo.style.fontWeight="";
-			
 			checkAdminNameInfo.innerHTML="未修改";
 			adminNameStatus=2;	// 未修改
 			return;
 		}
 		
-		// TODO: 验证用户名是否合法 （不能为空，应该是字母数组组合限制，长度限制）
-		if(adminName==""||adminName==null) {
+		// 验证用户名是否合法
+		if(adminName=="") {
 			checkAdminNameInfo.style.color="red";
-			checkAdminNameInfo.style.fontSize="";
-			checkAdminNameInfo.style.fontWeight="";
-			
 			checkAdminNameInfo.innerHTML="未填写";
 			adminNameStatus=0;
 			return;
 		}
 		
+		var reg = /^[a-z](?![a-z]+$)[a-z0-9]{5,11}$/i;
+		if(!reg.test(adminName)) {
+			checkAdminNameInfo.style.color = "red";
+			checkAdminNameInfo.innerHTML = "格式错误";
+			adminNameStatus=0;
+			return;
+		}
 		
 		createXMLHttpRequest();
 		xmlHttp.onreadystatechange=processor;
@@ -83,17 +99,11 @@
 				result=xmlHttp.responseText;
 				if(result==1) {
 					checkAdminNameInfo.style.color="green";
-					checkAdminNameInfo.style.fontSize="1.4em";
-					checkAdminNameInfo.style.fontWeight="bold";
-					
-					checkAdminNameInfo.innerHTML="&#10003;";	// &#10004;
+					checkAdminNameInfo.innerHTML="&#10004;";
 					
 					adminNameStatus=1;	// 合法
 				} else {
 					checkAdminNameInfo.style.color="red";
-					checkAdminNameInfo.style.fontSize="";
-					checkAdminNameInfo.style.fontWeight="";
-					
 					checkAdminNameInfo.innerHTML="用户名已被注册，请选择其他用户名";
 					
 					adminNameStatus=0;	// 不合法
@@ -110,29 +120,30 @@
 		
 		if(oldAdminRealName==adminRealName) {
 			checkAdminRealNameInfo.style.color="blue";
-			checkAdminRealNameInfo.style.fontSize="";
-			checkAdminRealNameInfo.style.fontWeight="";
-			
 			checkAdminRealNameInfo.innerHTML="未修改";
 			return 2;
 		}
 		
-		// TODO: 验证用户真实姓名是否合法 （不能为空，姓开头的汉字组合）
-		if(adminRealName==""||adminRealName==null) {
+		// 验证用户真实姓名是否合法
+		if(adminRealName=="") {
 			checkAdminRealNameInfo.style.color="red";
-			checkAdminRealNameInfo.style.fontSize="";
-			checkAdminRealNameInfo.style.fontWeight="";
-			
 			checkAdminRealNameInfo.innerHTML="未填写";
 			return 0;
 		}
 		
+		// 中文名（2-10位）或英文名(2-20位)
+		var reg = /^([a-z.\s]{2,20}|[\u4e00-\u9fa5]{2,10})$/i;
+		// .和空格是对于英文名
+		var reg2 = /[.\s]{2}/;	// 两个连续的 .或空格
+		var reg3 = /^[.\s]|[.\s]$/	// 开头或结尾为 .或空格
+		if(!reg.test(adminRealName) || reg2.test(adminRealName) || reg3.test(adminRealName)) {
+			checkAdminRealNameInfo.style.color="red";
+			checkAdminRealNameInfo.innerHTML="格式错误";
+			return 0;
+		}
+		
 		checkAdminRealNameInfo.style.color="green";
-		checkAdminRealNameInfo.style.fontSize="1.2em";
-		checkAdminRealNameInfo.style.fontWeight="bold";
-		
-		checkAdminRealNameInfo.innerHTML="&#10003;";
-		
+		checkAdminRealNameInfo.innerHTML="&#10004;";
 		return 1;
 	}
 	
@@ -145,28 +156,26 @@
 		
 		if(oldAdminPhoneNum==adminPhoneNum) {
 			checkAdminPhoneNumInfo.style.color="blue";
-			checkAdminPhoneNumInfo.style.fontSize="";
-			checkAdminPhoneNumInfo.style.fontWeight="";
-			
 			checkAdminPhoneNumInfo.innerHTML="未修改";
 			return 2;
 		}
 		
-		// TODO: 验证手机号码是否合法
-		if(adminPhoneNum==""||adminPhoneNum==null) {
+		// 验证手机号码是否合法
+		if(adminPhoneNum=="") {
 			checkAdminPhoneNumInfo.style.color="red";
-			checkAdminPhoneNumInfo.style.fontSize="";
-			checkAdminPhoneNumInfo.style.fontWeight="";
-			
 			checkAdminPhoneNumInfo.innerHTML="未填写";
 			return 0;
 		}
 		
-		checkAdminPhoneNumInfo.style.color="green";
-		checkAdminPhoneNumInfo.style.fontSize="1.2em";
-		checkAdminPhoneNumInfo.style.fontWeight="bold";
+		var reg = /^((13[0-9])|(14[5,6,7,9])|(15[^4])|(16[5,6])|(17[0-9])|(18[0-9])|(19[1,8,9]))\d{8}$/;
+		if(!reg.test(adminPhoneNum)) {
+			checkAdminPhoneNumInfo.style.color="red";
+			checkAdminPhoneNumInfo.innerHTML="格式错误";
+			return 0;
+		}
 		
-		checkAdminPhoneNumInfo.innerHTML="&#10003;";
+		checkAdminPhoneNumInfo.style.color="green";
+		checkAdminPhoneNumInfo.innerHTML="&#10004;";
 		return 1;
 	}
 	
@@ -219,7 +228,7 @@
 				<label for="adminName" class="col-md-2 control-label text-right" style="padding-right:0px;">用户名：</label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" id="adminName"
-						name="adminName" onblur="checkAdminName()" value="${admin[1]}">
+						name="adminName" onfocus="showAdminNameHelpInfo()" onblur="checkAdminName()" value="${admin[1]}">
 				</div>
 				<span id="checkAdminNameInfo" class="help-block"></span>
 			</div>
@@ -227,7 +236,7 @@
 				<label for="adminRealName" class="col-md-2 control-label text-right" style="padding-right:0px;">姓名：</label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" id="adminRealName"
-						name="adminRealName" onblur="checkAdminRealName()"
+						name="adminRealName" onfocus="showAdminRealNameHelpInfo()" onblur="checkAdminRealName()"
 						value="${admin[2]}">
 				</div>
 				<span id="checkAdminRealNameInfo" class="help-block"></span>
@@ -236,7 +245,7 @@
 				<label for="adminPhoneNum" class="col-md-2 control-label text-right" style="padding-right:0px;">电话号码：</label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" id="adminPhoneNum"
-						name="adminPhoneNum" onblur="checkAdminPhoneNum()"
+						name="adminPhoneNum" onfocus="showAdminPhoneNumHelpInfo()" onblur="checkAdminPhoneNum()"
 						value="${admin[3]}">
 				</div>
 				<span id="checkAdminPhoneNumInfo" class="help-block"></span>

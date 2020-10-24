@@ -13,11 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @WebFilter(filterName = "Filter02", urlPatterns = { "/admin/superAdmin", "/admin/superAdmin.jsp",
 		"/admin/regist.jsp", "/admin/modifyAdminInfo.jsp", "/admin/modifySuperAdminPassword.jsp",
 		"/admin/modifyAdminPassword.jsp"
 		 })
 public class SuperAdminFilter implements Filter {
+
+	private static final Logger logger = LogManager.getLogger();
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -32,14 +37,14 @@ public class SuperAdminFilter implements Filter {
 		Integer adminID = (Integer) session.getAttribute("adminID");
 
 		if (adminID == null) {
-			System.out.println("尚未登录！");
+			logger.info("尚未登录！");
 			out.print("<script type='text/javascript'>");
 			out.print("alert('尚未登录！');");
 			out.print("location.href='login.jsp';");
 			out.print("</script>");
 			return;
 		} else if (adminID != 1) {
-			System.out.println("无此权限！");
+			logger.info("无此权限！");
 			resp.sendRedirect("noPermission.jsp");
 			return;
 		}
