@@ -11,7 +11,6 @@
     <title>添加联系人</title>
 <link rel="stylesheet"
 	href="css/bootstrap.min.css" />
-
 <style>
 		* {
 	  margin: 0px;
@@ -36,7 +35,7 @@ body {
 }
 .header {
   width: 100%;
-  height: 150px;
+  height: 100px;
   background-color: #fff;
 }
 .wrap {
@@ -62,7 +61,7 @@ body {
 			position: absolute;
 			height:50px;
 			align-items:center;
-			top:12px;
+			top:24px;
 }
 .nav {
   width: 100%;
@@ -119,27 +118,18 @@ body {
   </head>
   <body>
     <div class="header">
-      
-      <div class="top">
-        <!-- 控制内容不超出安全区域的容器 -->
-        <div class="wrap">
-           问题反馈：
-          15129056163   <!-- <a href="#"> </a> --> 
-        </div>
-      </div>
-      
+
       <!-- 导航栏 -->
 	<nav class="nav">
 		<div class="wrap wrap-nav">
 			<!-- logo -->
-			<img src="img/Logo.png" class="logo"/>
+			<img src="images/Logo.png" class="logo"/>
 			<!-- 导航栏条目 -->
 			<div class="nav-item">
 
-				<a href="#">联系人</a>
-				<a href="logManagement.html">日志</a>
-				<a href="#">管理</a>
-				<a href="userInfo.html" class="nav-current-item">用户信息</a>
+				<a href="index.jsp" class="nav-current-item">联系人管理</a>
+				<a href="logManagement.jsp">日志管理</a>
+				<a href="userInfo.jsp">用户信息</a>
 			</div>
 			</div>
 	</nav>
@@ -153,36 +143,38 @@ body {
     		</div>
     		<div class="panel-body">
         		 <table class="table">
-                    <tr><label for="userName" class="col-sm-2 control-label">用户名</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" id="userName" placeholder="用户名" style="width:200px;"/>
-                        </div></tr>
-                        <tr><label for="userName" class="col-sm-2 control-label"> 联系方式</label>
-                            <div class="col-sm-10">
-                              <input type="email" class="form-control" id="userName" placeholder="用户名" style="width:200px;"/>
-                            </div></tr>b 
-
-        			<!-- <tr><td>类型</td>
-        				<td id="">
-	    					<label class="radio-inline">
-	        					<input type="radio" name="optionsRadiosinline" id="optionsRadios1" value="1" checked>项目日志
-	    					</label>
-	   						<label class="radio-inline">
-	        					<input type="radio" name="optionsRadiosinline" id="optionsRadios2"  value="2">工作日常
-	    					</label>
-	    					<label class="radio-inline">
-	        					<input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="3">其他
-	    					</label>
-	    					
-    					</td>
-        			</tr> -->
+                    <tr>
+                    <td>用户名</td>
+                    <td><input type="email" class="form-control" id="contactName" name="contactName" onfocus="showContactNameHelpInfo()" placeholder="用户名" style="width:200px;"/></td>
+                    </tr>
+                    
+                    <tr>
+                    <td>联系方式</td>
+                    <td><input type="text" class="form-control" id="contactPhoneNum" placeholder="联系方式" style="width:200px;"/></td>
+                    </tr>
+                    
+                    <tr>
+                    <td>企业名称</td>
+                    <td><input type="text" class="form-control" id="contactConpany" placeholder="企业名称" style="width:200px;"/></td>
+                    </tr>
+                    
+                    <tr>
+                    <td>邮箱地址</td>
+                    <td><input type="text" class="form-control" id="contactEmai" placeholder="邮箱地址" style="width:200px;"/></td>
+                    </tr>
+                    
+                    <tr>
+                    <td>备注信息</td>
+                    <td><input type="text" class="form-control" id="contactDetails" placeholder="备注信息" style="width:200px;"/></td>
+                    </tr>
         			
         			<tr><td></td>
-        				<td id="3">
-        					<button type="button" class="btn btn-primary" id='submit'>确认</button>
-                        </td>
-                        <td id="4">
-        					<button type="button" class="btn btn-primary" id='reset'>取消</button>
+        				<td>
+        				    <button type="button" class="btn btn-primary" id='submit'>添加</button>
+        					<a href="index.jsp">
+        					<button type="button" class="btn btn-primary" id='reset' >取消</button>
+        					</a>
+        					
         				</td>
         			</tr>
     			</table>
@@ -203,52 +195,34 @@ body {
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		//用户名校验
-		$(function() {
-			$(":input[name='username']").blur(function() {
-				var username = $(this).val();
-				if (username.length<3 || username.length>30) {
-					if ($('.form-group:first').hasClass('has-success')) {
-						$('.form-group:first').removeClass('has-success');
-					}
-					$('.form-group:first').addClass('has-error');
-					$('.inputError:first').css('display', 'inline-block');
-					$('#send-email').addClass('disabled');
-				} else {
-					if ($('.form-group:first').hasClass('has-error')) {
-						$('.form-group:first').removeClass('has-error');
-						$('.inputError:first').css('display', 'none');
-					}
-					$('#send-email').removeClass('disabled');
-					$('.form-group:first').addClass('has-success');
-				}
-			});
-		});
-		// 邮箱格式校验
-		$(function() {
-			$(":input[name='email']").blur(function() {
-				var email = $(this).val();
-				var reg = /\w+[@]{1}\w+[.]\w+/;
-				if (reg.test(email)) {
-					//$(":input[name='check']").val("email合法");
-					if ($('.form-group:last').hasClass('has-error')) {
-						$('.form-group:last').removeClass('has-error');
-						$('.inputError:last').css('display', 'none');
-					}
-					$('.form-group:last').addClass('has-success');
-					$('#send-email').removeClass('disabled');
-				} else {
-					//$(":input[name='check']").val("请输入正确的email地址");
-					if ($('.form-group:last').hasClass('has-success')) {
-						$('.form-group:last').removeClass('has-success');
-					}
-					$('.form-group:last').addClass('has-error');
-					$('.inputError:last').css('display', 'inline-block');
-					$('#send-email').addClass('disabled');
-				}
-			});
-		});
+	
+	    function showContactNameHelpInfo() {
+	    checkContactNameInfo.style.color="blue";
+		checkContactNameInfo.innerHTML="6-12位字母和数字的组合，并且以字母开头";
+	}
+	    
+	    var xmlHttp;
+		var contactNameStatus;
+		function createXMLHttpRequest() {
+			if (window.ActiveXObject) { // IE
+				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} else if (window.XMLHttpRequest) {
+				xmlHttp = new XMLHttpRequest();
+			}
+		}
+		
+		function checkContactName() {
+			var contactName=document.getElementById("contactName").value;
+			var checkContactNameInfo=document.getElementById("checkContactNameInfo");
+			
+			if(contactName=="") {
+				checkContactNameInfo.style.color="red";
+				checkContactNameInfo.innerHTML="用户名不可以为空";
+				contactNameStatus=false;
+				return;
+			}
+			}
+		
 	</script>
-
 </body>
 </html>

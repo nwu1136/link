@@ -38,7 +38,7 @@ body {
 }
 .header {
   width: 100%;
-  height: 150px;
+  height: 100px;
   background-color: #fff;
 }
 .wrap {
@@ -64,7 +64,7 @@ body {
 			position: absolute;
 			height:50px;
 			align-items:center;
-			top:12px;
+			top:24px;
 }
 .nav {
   width: 100%;
@@ -121,15 +121,7 @@ body {
   </head>
   <body>
     <div class="header">
-      
-      <div class="top">
-        <!-- 控制内容不超出安全区域的容器 -->
-        <div class="wrap">
-           问题反馈：
-          15129056163   <!-- <a href="#"> </a> --> 
-        </div>
-      </div>
-      
+
       <!-- 导航栏 -->
 	<nav class="nav">
 		<div class="wrap wrap-nav">

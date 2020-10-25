@@ -23,7 +23,7 @@
 		}
 		.header{
 			width:100%;
-			height: 150px;
+			height: 100px;
 			background-color: #fff;
 		}
 		.wrap{
@@ -49,7 +49,7 @@
 			position: absolute;
 			height:50px;
 			align-items:center;
-			top:12px;
+			top:24px;
 		}
 		.nav{
 			width:100%;
@@ -164,13 +164,7 @@
 <body>
 <!-- 包括顶部栏和导航栏的整体容器 -->
 <div class="header">
-	<!-- 顶部栏 -->
-	<div class="top">
-		<!-- 控制内容不超出安全区域的容器 -->
-		<div class="wrap">
-			问题反馈：15129056163
-		</div>
-	</div>
+
 	<!-- 导航栏 -->
 	<nav class="nav">
 		<div class="wrap wrap-nav">
@@ -178,7 +172,7 @@
 			<img src="images/Logo.png" class="logo"/>
 			<!-- 导航栏条目 -->
 			<div class="nav-item">
-				<a href="#">联系人管理</a>
+				<a href="index.jsp">联系人管理</a>
 				<a href="logManagement.jsp">日志管理</a>
 				<a href="userInfo.jsp" class="nav-current-item">我的信息</a>
 			</div>
@@ -219,9 +213,7 @@
 					<tr><td>用户名</td><td>姚登方</td></tr>
 					<tr><td>联系电话</td><td>15129056163</td></tr>
 					<tr><td>企业名称</td><td>西北大学</td></tr>
-        			<tr><td>联系地址</td><td>陕西省西安市长安区西北大学长安校区</td></tr>
         			<tr><td>邮箱地址</td><td>404268406@qq.com</td></tr>
-        			<tr><td>邮政编码</td><td>713100</td></tr>
         			<tr><td></td>
         				<td>
         					<button type="button" class="btn btn-primary">编辑用户信息</button>
