@@ -145,7 +145,8 @@
 	<nav class="nav">
 		<div class="wrap wrap-nav">
 			<!-- logo -->
-			<img src="images/Logo.png" class="logo"/>
+			<a href="index.jsp"><img src="images/Logo.png"> </a>
+			<!-- <img src="images/Logo.png" class="logo"/> -->
 			<!-- 导航栏条目 -->
 			
 			<div class="nav-item">

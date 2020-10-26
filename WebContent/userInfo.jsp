@@ -216,7 +216,7 @@
         			<tr><td>邮箱地址</td><td>404268406@qq.com</td></tr>
         			<tr><td></td>
         				<td>
-        					<button type="button" class="btn btn-primary">编辑用户信息</button>
+        					<button type="button" class="btn btn-primary" onclick="location.href='userInfoEdit.jsp'">编辑用户信息</button>
         				</td>
         			</tr>
     			</table>

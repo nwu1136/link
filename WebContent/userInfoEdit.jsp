@@ -126,14 +126,12 @@ body {
 	<nav class="nav">
 		<div class="wrap wrap-nav">
 			<!-- logo -->
-			<img src="img/Logo.png" class="logo"/>
+			<img src="images/Logo.png" class="logo"/>
 			<!-- 导航栏条目 -->
 			<div class="nav-item">
-				<a href="#">首页</a>
-				<a href="#">联系人</a>
-				<a href="logManagement.html">日志</a>
-				<a href="#">管理</a>
-				<a href="userInfo.html" class="nav-current-item">用户信息</a>
+				<a href="index.jsp">联系人管理</a>
+				<a href="logManagement.jsp" class="nav-current-item">日志管理</a>
+				<a href="userInfo.jsp">用户信息</a>
 			</div>
 			</div>
 	</nav>
@@ -164,11 +162,9 @@ body {
         			</tr> -->
         			
         			<tr><td></td>
-        				<td id="3">
+        				<td>
         					<button type="button" class="btn btn-primary" id='submit'>确认</button>
-                        </td>
-                        <td id="4">
-        					<button type="button" class="btn btn-primary" id='reset'>取消</button>
+        					<button type="button" class="btn btn-primary" id='reset' onclick="location.href='userInfo.jsp'">取消</button>
         				</td>
         			</tr>
     			</table>
