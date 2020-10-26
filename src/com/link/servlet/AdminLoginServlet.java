@@ -98,6 +98,7 @@ public class AdminLoginServlet extends HttpServlet {
 
 		HttpSession session = req.getSession();
 		session.setAttribute("adminID", admin.getAdminID());
+		session.setAttribute("adminName", admin.getAdminName());
 
 		// 判断是超级管理员还是普通管理员
 		if (admin.getAdminID() == 1) {

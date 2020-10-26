@@ -6,5 +6,5 @@ import com.link.entity.User;
 
 public interface IUserService {
 
-	public List<User> getAllUsers();
+	public List<User> getAllUsers() throws Exception;
 }

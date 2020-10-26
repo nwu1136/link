@@ -12,8 +12,8 @@ public class UserServiceImpl implements IUserService {
 	IUserDao userDao = new UserDaoImpl();
 
 	@Override
-	public List<User> getAllUsers() {
-		return null;
+	public List<User> getAllUsers() throws Exception {
+		return userDao.getAllUsers();
 	}
 
 }
