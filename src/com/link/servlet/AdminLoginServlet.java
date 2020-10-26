@@ -14,8 +14,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.link.entity.Admin;
-import com.link.service.ISuperAdminService;
-import com.link.service.impl.SuperAdminServiceImpl;
+import com.link.service.IAdminService;
+import com.link.service.impl.AdminServiceImpl;
 
 @WebServlet("/admin/login")
 public class AdminLoginServlet extends HttpServlet {
@@ -24,7 +24,7 @@ public class AdminLoginServlet extends HttpServlet {
 
 	private static final Logger logger = LogManager.getLogger();
 
-	ISuperAdminService adminService = new SuperAdminServiceImpl();
+	IAdminService adminService = new AdminServiceImpl();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

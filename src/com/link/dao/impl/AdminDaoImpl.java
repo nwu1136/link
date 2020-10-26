@@ -4,10 +4,10 @@ import java.sql.ResultSet;
 import java.util.List;
 
 import com.izual.dao.IBaseDaoImpl;
-import com.link.dao.ISuperAdminDao;
+import com.link.dao.IAdminDao;
 import com.link.entity.Admin;
 
-public class SuperAdminDaoImpl extends IBaseDaoImpl<Admin> implements ISuperAdminDao {
+public class AdminDaoImpl extends IBaseDaoImpl<Admin> implements IAdminDao {
 
 	@Override
 	public Admin login(Admin admin) throws Exception {
