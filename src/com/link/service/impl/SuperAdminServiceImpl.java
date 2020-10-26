@@ -2,15 +2,15 @@ package com.link.service.impl;
 
 import java.util.List;
 
-import com.link.dao.IAdminDao;
-import com.link.dao.impl.AdminDaoImpl;
+import com.link.dao.ISuperAdminDao;
+import com.link.dao.impl.SuperAdminDaoImpl;
 import com.link.entity.Admin;
-import com.link.service.IAdminService;
+import com.link.service.ISuperAdminService;
 import com.link.util.MD5;
 
-public class AdminServiceImpl implements IAdminService {
+public class SuperAdminServiceImpl implements ISuperAdminService {
 
-	IAdminDao adminDao = new AdminDaoImpl();
+	ISuperAdminDao superAdminDao = new SuperAdminDaoImpl();
 
 	@Override
 	public Admin login(Admin admin) throws Exception {
@@ -20,24 +20,24 @@ public class AdminServiceImpl implements IAdminService {
 		String passwordDigest = MD5.getStrMD5(adminPassword);
 		admin.setAdminPassword(passwordDigest);
 
-		return adminDao.login(admin);
+		return superAdminDao.login(admin);
 	}
 
 	@Override
 	public List<Admin> getAllAdmins() throws Exception {
-		return adminDao.getAllAdmins();
+		return superAdminDao.getAllAdmins();
 	}
 
 	@Override
 	public List<Admin> getAdminsByAdminName(String adminName) throws Exception {
 
-		return adminDao.getAdminsByAdminName(adminName.replaceAll("\\s+", "%"));
+		return superAdminDao.getAdminsByAdminName(adminName.replaceAll("\\s+", "%"));
 	}
 
 	@Override
 	public boolean modifyStatusByAdminID(int adminID, int status) throws Exception {
 
-		int ret = adminDao.modifyStatusByAdminID(adminID, status);
+		int ret = superAdminDao.modifyStatusByAdminID(adminID, status);
 		return ret > 0 ? true : false;
 	}
 
@@ -45,25 +45,25 @@ public class AdminServiceImpl implements IAdminService {
 	public boolean modifyPasswordByAdminID(int adminID, String adminPassword) throws Exception {
 
 		String newPassword = MD5.getStrMD5(adminPassword);
-		int ret = adminDao.modifyPasswordByAdminID(adminID, newPassword);
+		int ret = superAdminDao.modifyPasswordByAdminID(adminID, newPassword);
 		return ret > 0 ? true : false;
 	}
 
 	@Override
 	public boolean checkAdminNameIsUniqueForModify(int adminID, String adminName) throws Exception {
-		int ret = adminDao.checkAdminNameIsUniqueForModify(adminID, adminName);
+		int ret = superAdminDao.checkAdminNameIsUniqueForModify(adminID, adminName);
 		return ret > 0 ? false : true;
 	}
 
 	@Override
 	public boolean checkAdminNameIsUnique(String adminName) throws Exception {
-		int ret = adminDao.checkAdminNameIsUnique(adminName);
+		int ret = superAdminDao.checkAdminNameIsUnique(adminName);
 		return ret > 0 ? false : true;
 	}
 
 	@Override
 	public boolean modifyAdminInfoByAdminID(Admin admin) throws Exception {
-		int ret = adminDao.modifyAdminInfoByAdminID(admin);
+		int ret = superAdminDao.modifyAdminInfoByAdminID(admin);
 		return ret > 0 ? true : false;
 	}
 
@@ -74,7 +74,7 @@ public class AdminServiceImpl implements IAdminService {
 		String passwordDigest = MD5.getStrMD5(adminPassword);
 		admin.setAdminPassword(passwordDigest);
 
-		return adminDao.regist(admin) > 0 ? true : false;
+		return superAdminDao.regist(admin) > 0 ? true : false;
 	}
 
 }

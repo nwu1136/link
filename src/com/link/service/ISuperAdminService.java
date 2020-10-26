@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.link.entity.Admin;
 
-public interface IAdminService {
+public interface ISuperAdminService {
 
 	public Admin login(Admin admin) throws Exception;
 

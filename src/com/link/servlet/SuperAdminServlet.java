@@ -15,8 +15,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.link.entity.Admin;
-import com.link.service.IAdminService;
-import com.link.service.impl.AdminServiceImpl;
+import com.link.service.ISuperAdminService;
+import com.link.service.impl.SuperAdminServiceImpl;
 
 @WebServlet("/admin/superAdmin")
 public class SuperAdminServlet extends HttpServlet {
@@ -25,7 +25,7 @@ public class SuperAdminServlet extends HttpServlet {
 
 	private static final Logger logger = LogManager.getLogger();
 
-	IAdminService adminService = new AdminServiceImpl();
+	ISuperAdminService superAdminService = new SuperAdminServiceImpl();
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -75,7 +75,7 @@ public class SuperAdminServlet extends HttpServlet {
 
 	private void getAllAdmins(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
-		List<Admin> adminList = adminService.getAllAdmins();
+		List<Admin> adminList = superAdminService.getAllAdmins();
 		req.setAttribute("adminList", adminList);
 
 		req.getRequestDispatcher("superAdmin.jsp").forward(req, resp);
@@ -96,7 +96,7 @@ public class SuperAdminServlet extends HttpServlet {
 			return;
 		}
 
-		List<Admin> adminList = adminService.getAdminsByAdminName(adminName);
+		List<Admin> adminList = superAdminService.getAdminsByAdminName(adminName);
 		if (adminList.size() == 0) {
 			out.print("<script type='text/javascript'>");
 			out.print("alert('未找到相关管理员信息！');");
@@ -116,7 +116,7 @@ public class SuperAdminServlet extends HttpServlet {
 		int adminID = Integer.parseInt(req.getParameter("id"));
 		int status = Integer.parseInt(req.getParameter("status"));
 
-		boolean ret = adminService.modifyStatusByAdminID(adminID, status);
+		boolean ret = superAdminService.modifyStatusByAdminID(adminID, status);
 
 		if (ret) {
 			System.out.println("状态修改成功！");
@@ -160,7 +160,7 @@ public class SuperAdminServlet extends HttpServlet {
 			return;
 		}
 
-		boolean ret = adminService.modifyPasswordByAdminID(1, adminPassword);
+		boolean ret = superAdminService.modifyPasswordByAdminID(1, adminPassword);
 		if (ret) {
 			logger.info("超级管理员密码修改成功！");
 			req.getSession().invalidate();
@@ -205,7 +205,7 @@ public class SuperAdminServlet extends HttpServlet {
 			return;
 		}
 
-		boolean ret = adminService.modifyPasswordByAdminID(Integer.parseInt(adminID), adminPassword);
+		boolean ret = superAdminService.modifyPasswordByAdminID(Integer.parseInt(adminID), adminPassword);
 		if (ret) {
 			logger.info("管理员密码修改成功！");
 			out.print("<script type='text/javascript'>");
@@ -231,7 +231,7 @@ public class SuperAdminServlet extends HttpServlet {
 		
 		logger.info("check admin name is unique? request param: adminName = {}", adminName);
 
-		boolean isUnique = adminService.checkAdminNameIsUnique(adminName);
+		boolean isUnique = superAdminService.checkAdminNameIsUnique(adminName);
 		if (isUnique)
 			out.print(1);
 		else
@@ -247,7 +247,7 @@ public class SuperAdminServlet extends HttpServlet {
 		logger.info("check admin name is unique for modify? request params: adminID = {}, adminName = {}", adminID,
 				adminName);
 
-		boolean isUnique = adminService.checkAdminNameIsUniqueForModify(adminID, adminName);
+		boolean isUnique = superAdminService.checkAdminNameIsUniqueForModify(adminID, adminName);
 
 		if (isUnique)
 			out.print(1);
@@ -279,7 +279,7 @@ public class SuperAdminServlet extends HttpServlet {
 		admin.setAdminPhoneNum(adminPhoneNum);
 		logger.info("modify admin info: {}", admin);
 
-		boolean ret = adminService.modifyAdminInfoByAdminID(admin);
+		boolean ret = superAdminService.modifyAdminInfoByAdminID(admin);
 		if (ret) {
 			logger.info("admin info modified successfully");
 			out.print("<script type='text/javascript'>");
@@ -350,7 +350,7 @@ public class SuperAdminServlet extends HttpServlet {
 		Admin admin = new Admin(null, adminName, password1, adminRealName, adminPhoneNum, null);
 		logger.info("regist new admin, request params: {}", admin);
 
-		boolean ret = adminService.regist(admin);
+		boolean ret = superAdminService.regist(admin);
 		if (ret) {
 			logger.info("admin registered successfully");
 			out.print("<script type='text/javascript'>");
