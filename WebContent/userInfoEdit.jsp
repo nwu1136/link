@@ -146,20 +146,6 @@ body {
     		<div class="panel-body">
         		 <table class="table">
         			<tr><td>用户名</td><td id="1">--</td></tr>
-        			<!-- <tr><td>日志类型</td>
-        				<td id="">
-	    					<label class="radio-inline">
-	        					<input type="radio" name="optionsRadiosinline" id="optionsRadios1" value="1" checked>项目日志
-	    					</label>
-	   						<label class="radio-inline">
-	        					<input type="radio" name="optionsRadiosinline" id="optionsRadios2"  value="2">工作日常
-	    					</label>
-	    					<label class="radio-inline">
-	        					<input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="3">其他
-	    					</label>
-	    					
-    					</td>
-        			</tr> -->
         			
         			<tr><td></td>
         				<td>

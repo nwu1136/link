@@ -142,42 +142,47 @@ body {
         		<h3 class="panel-title">添加联系人</h3>
     		</div>
     		<div class="panel-body">
-        		 <table class="table">
+        	<!--  <table class="table"> -->
+        	<form action="user?action=userAddContact" method="post" >
+        	
+        			<input type="hidden" name="userID" value="1">
                     <tr>
                     <td>用户名</td>
-                    <td><input type="email" class="form-control" id="contactName" name="contactName" onfocus="showContactNameHelpInfo()" placeholder="用户名" style="width:200px;"/></td>
+                    <td><input type="text" class="form-control" id="contactName" name="contactName" onfocus="showContactNameHelpInfo()" placeholder="用户名" style="width:200px;"/></td>
                     </tr>
                     
                     <tr>
                     <td>联系方式</td>
-                    <td><input type="text" class="form-control" id="contactPhoneNum" placeholder="联系方式" style="width:200px;"/></td>
+                    <td><input type="text" class="form-control" id="contactPhoneNum" name="contactPhoneNum" placeholder="联系方式" style="width:200px;"/></td>
                     </tr>
                     
                     <tr>
                     <td>企业名称</td>
-                    <td><input type="text" class="form-control" id="contactConpany" placeholder="企业名称" style="width:200px;"/></td>
+                    <td><input type="text" class="form-control" id="contactCompany" name="contactCompany" placeholder="企业名称" style="width:200px;"/></td>
                     </tr>
                     
                     <tr>
                     <td>邮箱地址</td>
-                    <td><input type="text" class="form-control" id="contactEmai" placeholder="邮箱地址" style="width:200px;"/></td>
+                    <td><input type="text" class="form-control" id="contactEmail" name="contactEmail" placeholder="邮箱地址" style="width:200px;"/></td>
                     </tr>
                     
                     <tr>
                     <td>备注信息</td>
-                    <td><input type="text" class="form-control" id="contactDetails" placeholder="备注信息" style="width:200px;"/></td>
+                    <td><input type="text" class="form-control" id="contactDetails" name="contactDetails" placeholder="备注信息" style="width:200px;"/></td>
                     </tr>
         			
         			<tr><td></td>
         				<td>
-        				    <button type="button" class="btn btn-primary" id='submit'>添加</button>
+        				    <button type="submit" class="btn btn-primary" id='submit'>添加</button>
         					<a href="index.jsp">
-        					<button type="button" class="btn btn-primary" id='reset' >取消</button>
+        					<button type="reset" class="btn btn-primary" id='reset' >取消</button>
         					</a>
         					
         				</td>
         			</tr>
-    			</table>
+        			</form>
+        			
+    			<!-- </table> -->
     		</div>
 		</div>
 	</div>

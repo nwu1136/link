@@ -16,4 +16,10 @@ public class ContactServiceImpl implements IContactService {
 		return contactDao.getAllContacts();
 	}
 
+	@Override
+	public boolean userAddContact(Contact contact) throws Exception {
+
+		return contactDao.userAddContact(contact) > 0 ? true : false;
+	}
+
 }

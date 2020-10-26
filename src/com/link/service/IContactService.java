@@ -7,4 +7,6 @@ import com.link.entity.Contact;
 public interface IContactService {
 
 	public List<Contact> getAllContacts() throws Exception;
+
+	public boolean userAddContact(Contact contact) throws Exception;
 }

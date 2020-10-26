@@ -20,6 +20,15 @@ public class ContactDaoImpl extends IBaseDaoImpl<Contact> implements IContactDao
 	}
 
 	@Override
+	public int userAddContact(Contact contact) throws Exception {
+		String sql = "insert into tb_contact(userID,contactName,contactCompany,contactPhoneNum,contactEmail,contactDetails) value(?,?,?,?,?,?)";
+		Object[] params = { contact.getUserID(), contact.getContactName(), contact.getContactCompany(),
+				contact.getContactPhoneNum(), contact.getContactEmail(), contact.getContactDetails() };
+
+		return insert(sql, params);
+	}
+
+	@Override
 	protected Contact getBean(ResultSet rs) throws Exception {
 
 		Contact contact = new Contact();

@@ -1,6 +1,7 @@
 package com.link.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -36,6 +37,9 @@ public class UserServlet extends HttpServlet {
 			case "getAllContacts":
 				getAllContacts(req, resp);
 				break;
+			case "userAddContact":
+				userAddContact(req, resp);
+				break;
 
 			default:
 				break;
@@ -44,6 +48,7 @@ public class UserServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+
 
 	private void getAllContacts(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
@@ -55,6 +60,42 @@ public class UserServlet extends HttpServlet {
 
 		req.setAttribute("contactList", contactList);
 		req.getRequestDispatcher("index.jsp").forward(req, resp);
+	}
+
+	private void userAddContact(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+
+		PrintWriter out = resp.getWriter();
+
+		Integer userID = Integer.parseInt(req.getParameter("userID"));
+		String contactName = req.getParameter("contactName");
+		String contactPhoneNum = req.getParameter("contactPhoneNum");
+		String contactCompany = req.getParameter("contactCompany");
+		String contactEmail = req.getParameter("contactEmail");
+		String contactDetails = req.getParameter("contactDetails");
+
+		// TODO:判断是否为NULL 是否为空
+
+		Contact contact = new Contact(null, userID, contactName, contactCompany, contactPhoneNum, contactEmail,
+				contactDetails);
+//		logger.info(contact);
+
+		boolean ret = contactService.userAddContact(contact);
+
+		if (ret) {
+			logger.info("添加成功！");
+			out.print("<script type='text/javascript'>");
+			out.print("alert('添加成功！');");
+			out.print("location.href='index.jsp';");
+			out.print("</script>");
+		} else {
+			logger.info("添加失败！");
+			out.print("<script type='text/javascript'>");
+			out.print("alert('添加失败！');");
+			out.print("location.href='userAddContact.jsp';");
+			out.print("</script>");
+
+		}
+
 	}
 
 }

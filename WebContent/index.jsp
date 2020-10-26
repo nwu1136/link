@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ page import="java.util.List"%>
+<%@ page import="com.link.entity.Contact"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -139,6 +141,16 @@
 	</style>
 </head>
 <body>
+	<%
+
+		@SuppressWarnings("unchecked")
+		List<Contact> contactList = (List<Contact>) request.getAttribute("contactList");
+		if (contactList == null) {
+	%>
+	<jsp:forward page="user?action=getAllContacts"></jsp:forward>
+	<%
+		}
+	%>
 <!-- 包括顶部栏和导航栏的整体容器 -->
 <div class="header">
 
@@ -191,7 +203,18 @@
 					  	</tr>
 					</thead>
 					<tbody>
-					    
+					    <c:forEach var="contact" items="${contactList}">
+							<tr>
+								<th>${contact.contactName}</th>
+								<td>${contact.contactCompany}</td>
+								<td>${contact.contactPhoneNum}</td>
+								<td>${contact.contactEmail}</td>
+								<td>${contact.contactDetails}</td>
+								<td><a href="#">修改</a></td>
+								<td><a href="#">删除</a></td>
+								<!-- <td><button type="button" style="color:red;">删除</button></td> -->
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
     		</div>
@@ -208,120 +231,6 @@
 </div>
 </body>
 <script type="text/javascript">
-	// 前端期待后端接口返回的数据格式为
-    var data = {'data':[
-    						{'姓名':'小明','企业名称':'西北大学','手机号码':'13302565849','邮箱地址':'12346789@emai.com','详细信息':0},
-    						{'姓名':'风清扬','企业名称':'西北大学','手机号码':'13302565849','邮箱地址':'12346789@emai.com','详细信息':0},
-    						{'姓名':'小红','企业名称':'西北大学','手机号码':'13302565849','邮箱地址':'12346789@emai.com','详细信息':0},
-    						{'姓名':'李华','企业名称':'西北大学','手机号码':'13302565849','邮箱地址':'12346789@emai.com','详细信息':0},
-    						{'姓名':'小东','企业名称':'西北大学','手机号码':'13302565849','邮箱地址':'12346789@emai.com','详细信息':0}
-    				   ]
-    		    };
 
-
-    // 发送请求，获取页面初始数据
-	$(function(){
-        $.ajax({
-            url:"url",
-            type:"get",
-            success: function(data){
-            	var tbody = $('tbody');
-			    for(var i=0;i<data['data'].length;i++){
-			        //console.log(tdArray[i].text());
-			        var tr = $("<tr></tr>");
-			        var td1 = $("<td>"+ data['data'][i]['姓名'] +"</td>");
-			        var td2 = $("<td>"+ data['data'][i]['企业名称'] +"</td>");
-			        var td3 = $("<td>"+ data['data'][i]['手机号码'] +"</td>");
-			        var td4 = $("<td>"+ data['data'][i]['邮箱地址'] +"</td>");
-			        var td5 = $("<td>"+ data['data'][i]['详细信息'] +"</td>");
-			        var td6 = $("<td></td>");
-
-			        var button = $("<button type='button' class='btn btn-success'>查看</button>");
-			        td6.append(button);
-
-			        tr.append(td1);
-			        tr.append(td2);
-			        tr.append(td3);
-			        tr.append(td4);
-			        tr.append(td5);
-			        tr.append(td6);
-
-			        tbody.append(tr);
-			    }
-            },
-           // error: function(e){
-           // 	alert("请求失败:"+e.status);
-           // }
-        });
-
-    })
-
-	// 后台接口实现后请删除以下代码
-    var tbody = $('tbody');
-    for(var i=0;i<data['data'].length;i++){
-        //console.log(tdArray[i].text());
-        var tr = $("<tr></tr>");
-        var td1 = $("<td>"+ data['data'][i]['姓名'] +"</td>");
-		var td2 = $("<td>"+ data['data'][i]['企业名称'] +"</td>");
-		var td3 = $("<td>"+ data['data'][i]['手机号码'] +"</td>");
-		var td4 = $("<td>"+ data['data'][i]['邮箱地址'] +"</td>");
-		var td5 = $("<td>"+ data['data'][i]['详细信息'] +"</td>");
-        var td6 = $("<td></td>");
-
-        var button = $("<button type='button' class='btn btn-success'>查看</button>");
-        var button2 = $("<button type='button' class='btn btn-primary'>编辑</button>");
-        var button3 = $("<button type='button' class='btn btn-danger'>删除</button>");
-        td6.append(button);
-        td6.append(button2);
-        td6.append(button3);
-        
-        tr.append(td1);
-        tr.append(td2);
-        tr.append(td3);
-        tr.append(td4);
-        tr.append(td5);
-        tr.append(td6);
-        tbody.append(tr);
-    }
-    // 后台接口实现后请删除以上代码
-    
-    // 为按钮绑定事件
-    $('.btn').on('click',function(event){
-    	var action = $(this).text();
-    	var tds = $(this).parent().parent().children();
-
-    	var data_array = new Array();
-    	for(var i=1;i<tds.length;i++){
-    		//console.log(tds[i]);
-    		data_array[i] = tds[i].textContent;
-
-    	}
-
-    	
-    	var data = {
-    		'姓名':data_array[1],'企业名称':data_array[2],'手机号码':data_array[3],'邮箱地址':data_array[4],'详细信息':data_array[5],'action':action
-    	}
-
-    	console.log(data);
-    	var json_data = JSON.stringify(data);
-
-    	// 发送请求
-    	$.ajax({
-			url:"url",
-			type:"POST",
-			async:true,
-			dataType:"json",
-			data:json_data,
-			success:function(data){
-				
-			},
-            error: function(e){
-            	console.log(data['action']);
-            	if(data['action']=="编辑"){
-            		window.location='modifyContactInfo.jsp?id='+data['id']+'';
-            	}
-            }
-		});
-    });
 </script>
 </html>
