@@ -64,7 +64,7 @@ public class AdminLoginServlet extends HttpServlet {
 		admin.setAdminName(adminName);
 		admin.setAdminPassword(adminPassword);
 		
-		logger.info("admin login, request params: " + admin);
+		logger.info("admin login, request params: {}", admin);
 
 		// 验证用户名和密码
 		try {

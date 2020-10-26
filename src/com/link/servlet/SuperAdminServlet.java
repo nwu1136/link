@@ -86,7 +86,7 @@ public class SuperAdminServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 
 		String adminName = req.getParameter("searchName");
-		System.out.println("根据用户名查询管理员信息：adminName=" + adminName);
+		logger.info("根据用户名查询管理员信息：adminName= {}", adminName);
 		if (adminName.equals("")) {
 			System.out.println("输入为空！");
 			out.print("<script type='text/javascript'>");
@@ -140,8 +140,7 @@ public class SuperAdminServlet extends HttpServlet {
 		String adminPassword = req.getParameter("password1");
 		String adminPassword2 = req.getParameter("password2");
 
-		System.out.println("修改超级管理员密码");
-		System.out.println("adminID=1");
+		logger.info("修改超级管理员密码");
 
 		// 先验证是否为空
 		if (adminPassword == null || adminPassword.equals("") || adminPassword2 == null || adminPassword2.equals("")) {
@@ -163,7 +162,7 @@ public class SuperAdminServlet extends HttpServlet {
 
 		boolean ret = adminService.modifyPasswordByAdminID(1, adminPassword);
 		if (ret) {
-			System.out.println("超级管理员密码修改成功！");
+			logger.info("超级管理员密码修改成功！");
 			req.getSession().invalidate();
 
 			out.print("<script type='text/javascript'>");
@@ -171,7 +170,7 @@ public class SuperAdminServlet extends HttpServlet {
 			out.print("location.href='login.jsp';");
 			out.print("</script>");
 		} else {
-			System.out.println("超级管理员密码修改失败！");
+			logger.info("超级管理员密码修改失败！");
 			out.print("<script type='text/javascript'>");
 			out.print("alert('密码修改失败！');");
 			out.print("location.href='modifySuperAdminPassword.jsp';");
@@ -187,8 +186,8 @@ public class SuperAdminServlet extends HttpServlet {
 		String adminPassword = req.getParameter("password1");
 		String adminPassword2 = req.getParameter("password2");
 
-		System.out.println("修改管理员密码");
-		System.out.println("adminID=" + adminID);
+		logger.info("修改管理员密码");
+		logger.info("adminID=" + adminID);
 
 		if (adminPassword == null || adminPassword.equals("") || adminPassword2 == null || adminPassword2.equals("")) {
 			out.print("<script type='text/javascript'>");
@@ -208,13 +207,13 @@ public class SuperAdminServlet extends HttpServlet {
 
 		boolean ret = adminService.modifyPasswordByAdminID(Integer.parseInt(adminID), adminPassword);
 		if (ret) {
-			System.out.println("管理员密码修改成功！");
+			logger.info("管理员密码修改成功！");
 			out.print("<script type='text/javascript'>");
 			out.print("alert('密码修改成功！');");
 			out.print("location.href='superAdmin.jsp';");
 			out.print("</script>");
 		} else {
-			System.out.println("管理员密码修改失败！");
+			logger.info("管理员密码修改失败！");
 			out.print("<script type='text/javascript'>");
 			out.print("alert('密码修改失败，请重试！');");
 			out.print("location.href='superAdmin.jsp';");
@@ -278,7 +277,7 @@ public class SuperAdminServlet extends HttpServlet {
 		admin.setAdminName(adminName);
 		admin.setAdminRealName(adminRealName);
 		admin.setAdminPhoneNum(adminPhoneNum);
-		logger.info("modify admin info: " + admin);
+		logger.info("modify admin info: {}", admin);
 
 		boolean ret = adminService.modifyAdminInfoByAdminID(admin);
 		if (ret) {
@@ -349,7 +348,7 @@ public class SuperAdminServlet extends HttpServlet {
 		}
 
 		Admin admin = new Admin(null, adminName, password1, adminRealName, adminPhoneNum, null);
-		logger.info("regist new admin, request params: " + admin);
+		logger.info("regist new admin, request params: {}", admin);
 
 		boolean ret = adminService.regist(admin);
 		if (ret) {

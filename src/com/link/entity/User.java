@@ -12,13 +12,14 @@ public class User implements Serializable {
 	private String userRealName;
 	private String userPhoneNum;
 	private String userEmail;
+	private String headImgName;
 
 	public User() {
 		super();
 	}
 
 	public User(Integer userID, String userName, String userPassword, String userRealName, String userPhoneNum,
-			String userEmail) {
+			String userEmail, String headImgName) {
 		super();
 		this.userID = userID;
 		this.userName = userName;
@@ -26,13 +27,14 @@ public class User implements Serializable {
 		this.userRealName = userRealName;
 		this.userPhoneNum = userPhoneNum;
 		this.userEmail = userEmail;
+		this.headImgName = headImgName;
 	}
 
 	@Override
 	public String toString() {
-		return "User [userID=" + userID + ", userName=" + userName + ", userPassword=" + userPassword
-				+ ", userRealName=" + userRealName + ", userPhoneNum=" + userPhoneNum + ", userEmail=" + userEmail
-				+ "]";
+		return "User [userID=" + userID + ", userName=" + userName + ", userPassword=p@$$w0rd" + ", userRealName="
+				+ userRealName + ", userPhoneNum=" + userPhoneNum + ", userEmail=" + userEmail + ", headImgName="
+				+ headImgName + "]";
 	}
 
 	public Integer getUserID() {
@@ -81,6 +83,14 @@ public class User implements Serializable {
 
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
+	}
+
+	public String getHeadImgName() {
+		return headImgName;
+	}
+
+	public void setHeadImgName(String headImgName) {
+		this.headImgName = headImgName;
 	}
 
 }

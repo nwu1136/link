@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>管理员</title>
 </head>
 <body>
-	管理员
+	普通管理员
 </body>
 </html>
