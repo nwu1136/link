@@ -16,4 +16,8 @@ public class UserServiceImpl implements IUserService {
 		return userDao.getAllUsers();
 	}
 
+	@Override
+	public boolean registUser(User user) throws Exception {
+		return userDao.registUser(user) > 0 ? true : false;
+	}
 }

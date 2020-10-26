@@ -56,7 +56,7 @@
 					<h3 class="panel-title text-center">用户操作</h3>
 				</div>
 				<div class="panel-body">
-					<div class="text-center" style="font-size:18px;"><span style="font-weight:bold; color:green; margin-right:5px; text-align:center;">&#43;</span><a href="regist.jsp">创建新用户</a></div>
+					<div class="text-center" style="font-size:18px;"><span style="font-weight:bold; color:green; margin-right:5px; text-align:center;">&#43;</span><a href="registUser.jsp">创建新用户</a></div>
 				</div>
 			</div>
 		</div>

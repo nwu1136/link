@@ -20,6 +20,16 @@ public class UserDaoImpl extends IBaseDaoImpl<User> implements IUserDao {
 	}
 
 	@Override
+	public int registUser(User user) throws Exception {
+
+		String sql = "insert into tb_user(userName, userPassword, userRealName, userPhoneNum, userEmail) values(?,?,?,?,?)";
+		Object[] params = { user.getUserName(), user.getUserPassword(), user.getUserRealName(), user.getUserPhoneNum(),
+				user.getUserEmail() };
+
+		return insert(sql, params);
+	}
+
+	@Override
 	protected User getBean(ResultSet rs) throws Exception {
 
 		User user = new User();

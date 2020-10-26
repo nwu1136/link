@@ -21,7 +21,7 @@ public class ValidateCodeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		Object[] validateCode = ValidateCode.createValidateCode(ValidateCodeType.COMBINATION);
+		Object[] validateCode = ValidateCode.createValidateCode(ValidateCodeType.CHINESECHARS);
 
 		req.getSession().setAttribute("serverValidateCode", validateCode[0]);
 

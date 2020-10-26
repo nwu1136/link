@@ -70,7 +70,7 @@ public class AdminLoginServlet extends HttpServlet {
 		try {
 			admin = adminService.login(admin);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.atWarn().withThrowable(e).log("登录错误");
 		}
 
 		if (admin != null && admin.getAdminID() > 0) {
