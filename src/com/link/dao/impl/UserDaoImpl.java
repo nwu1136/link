@@ -30,6 +30,21 @@ public class UserDaoImpl extends IBaseDaoImpl<User> implements IUserDao {
 	}
 
 	@Override
+	public User login(User user) throws Exception {
+		String sql = "select * from tb_admin where adminName=? and adminPassword=?";
+		Object[] params = { user.getUserName(), user.getUserPassword() };
+
+		List<User> userList = select(sql, params);
+
+//		if (adminList != null && adminList.size() > 0)
+		if (userList.size() > 0) {
+			return userList.get(0);
+		}
+
+		return null;
+	}
+
+	@Override
 	protected User getBean(ResultSet rs) throws Exception {
 
 		User user = new User();
@@ -43,5 +58,6 @@ public class UserDaoImpl extends IBaseDaoImpl<User> implements IUserDao {
 
 		return user;
 	}
+
 
 }

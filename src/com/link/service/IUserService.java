@@ -9,4 +9,6 @@ public interface IUserService {
 	public List<User> getAllUsers() throws Exception;
 
 	public boolean registUser(User user) throws Exception;
+
+	public User login(User user) throws Exception;
 }

@@ -9,4 +9,6 @@ public interface IUserDao {
 	public List<User> getAllUsers() throws Exception;
 
 	public int registUser(User user) throws Exception;
+
+	public User login(User user) throws Exception;
 }

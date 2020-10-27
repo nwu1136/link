@@ -33,7 +33,7 @@ body {
 
 .header {
 	width: 100%;
-	height: 150px;
+	height: 100px;
 	background-color: #fff;
 }
 
@@ -128,14 +128,6 @@ body {
 </head>
 <body>
 	<div class="header">
-		<!-- 顶部栏 -->
-		<div class="top">
-			<!-- 控制内容不超出安全区域的容器 -->
-			<div class="wrap">
-
-				问题反馈：15129056163 <a href="#">用户登录</a>
-			</div>
-		</div>
 		<!-- 导航栏 -->
 		<nav class="nav">
 			<div class="wrap wrap-nav">
@@ -155,45 +147,45 @@ body {
 						<h3>欢迎登录LINK工作簿管理系统</h3>
 					</div>
 					<div class="col-md-12">
-						<form class="form-horizontal" style="margin: 3em;">
+						<form class="form-horizontal" action="login" method="post" onsubmit="return checkForm()" >
 							<div class="form-group" style="margin: 2em 1em;">
 								<label for="userName" class="col-sm-2 control-label">用户名
 
 								</label>
 								<div class="col-sm-10">
 
-									<input type="email" class="form-control" id="userName"
+									<input type="text" class="form-control" id="userName" name="userName"
 										placeholder="用户名" />
 								</div>
 							</div>
-							<div class="alert alert-danger" role="alert" id="userNameInfo">
-								账号不存在</div>
+							<!-- <div class="alert alert-danger" role="alert" id="userNameInfo">
+								账号不存在</div> -->
 							<div class="form-group" style="margin: 2em 1em;">
 								<label for="password" class="col-sm-2 control-label">密码</label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control" id="password"
+									<input type="password" class="form-control" id="userPassword" name="userPassword"
 										placeholder="密码" />
 								</div>
 							</div>
-							<div class="alert alert-danger" role="alert" id="passwordInfo">
-								密码错误</div>
+							<!-- <div class="alert alert-danger" role="alert" id="passwordInfo">
+								密码错误</div> -->
 							<div class="form-group form-inline" style="margin: 2em 1em;">
 								<label for="captcha" class="col-sm-2 control-label">验证码</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="captcha"
+									<input type="text" class="form-control" id="validateCode"
 										placeholder="验证码" /> 
 								</div>
 								<span class="col-sm-2" style="margin-left:60px;"><img title="看不清？点击换一张呗"
 										src="ValidateCode"
 										onclick="this.src='ValidateCode?num='+Math.random()" /></span>
 							</div>
-							<div class="alert alert-danger" role="alert" id="captchaInfo">
-								验证码错误</div>
+							<!-- <div class="alert alert-danger" role="alert" id="captchaInfo">
+								验证码错误</div> -->
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									<div class="row" style="text-align: center;">
 										<div class="col-md-4">
-											<button type="button" id="submit" class="btn btn-default">
+											<button type="submit" id="submit" class="btn btn-default">
 												登录</button>
 										</div>
 
@@ -223,89 +215,20 @@ body {
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
-	let $submit = $("#submit");
-let $userName = $("#userName");
-let $password = $("#password");
-let $captcha = $("#captcha");
-let $userNameInfo = $("#userNameInfo");
-let $passwordInfo = $("#passwordInfo");
-
-let $captchaInfo = $("#captchaInfo");
-
-$userNameInfo.hide();
-$passwordInfo.hide();
-$captchaInfo.hide();
-
-let inputCheck = (input, inputInfo, info) => {
-  input.bind("input propertychange", function (event) {
-    if (input.val() === "") {
-      inputInfo.show();
-      inputInfo.text(info);
-    } else {
-      inputInfo.hide();
-    }
-  });
-};
-
-inputCheck($password, $passwordInfo, "密码不能为空");
-inputCheck($captcha, $captchaInfo, "验证码不能为空");
-
-$userName.bind("input propertychange", function (event) {
-  if ($userName.val().length <= 4) {
-    $userNameInfo.show();
-    $userNameInfo.text("用户名错误,用户名为4-20位数子,字母,下划线");
-  } else {
-    $userNameInfo.hide();
-  }
-});
-
-
-let userInfo = {};
-$submit.on("click", function () {
-  let inputCorrect = false;
-  if ($userName.val() === "") {
-    $userNameInfo.text("用户名不能为空");
-    $userNameInfo.show();
-  } else if ($password.val() === "") {
-    $passwordInfo.text("密码不能为空");
-    $passwordInfo.show();
-  } else if ($captcha.val() === "") {
-    $captchaInfo.text("请输入验证码");
-    $captchaInfo.show();
-  } else {
-    $userNameInfo.hide();
-    $passwordInfo.hide();
-    userInfo.userName = $userName.val();
-    userInfo.password = $password.val();
-    inputCorrect = true;
-  }
-  if (inputCorrect) {
-    console.log(JSON.stringify(userInfo));
-    $.ajax({
-      type: "post", //请求类型
-      dataType: "json", //请求数据返回类型
-      url: "https://aliyun.firehua.top/admin/json_data/sent_data", //请求地址
-      data: userInfo,
-      success: function (result) {
-        //成功
-        console.log(result);
-        if (result.code === 200) {
-          // console.log(result);
-          console.log("成功");
-        } else {
-          // console.log(result);
-          console.log("失败");
-        }
-      },
-      error: function (result) {
-        //失败
-        // console.log(result);
-        console.log("异常");
-      },
-    });
-  }
-});
-
+	function checkForm() {
+		var username=document.getElementById("userName").value;
+		var password=document.getElementById("userPassword").value;
+		var validatecode=document.getElementById("validateCode").value;
+		// console.log(username);
+		// console.log(password);
+		// console.log(validatecode);
+		
+		if(userName==""||userPassword==""||validateCode=="") {
+			alert("有未填写项！");
+			return false;
+		}
+		return true;
+	}
 	</script>
 </body>
 </html>
