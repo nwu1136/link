@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
+<%@ page import="com.link.entity.User"%>
 <%@ page import="com.link.entity.Contact"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -142,7 +143,8 @@
 </head>
 <body>
 	<%
-
+		User user = (User) session.getAttribute("user");
+	
 		@SuppressWarnings("unchecked")
 		List<Contact> contactList = (List<Contact>) request.getAttribute("contactList");
 		if (contactList == null) {
@@ -151,7 +153,7 @@
 	<%
 		}
 	%>
-<!-- 包括顶部栏和导航栏的整体容器 -->
+	<!-- 包括顶部栏和导航栏的整体容器 -->
 <div class="header">
 
 	<!-- 导航栏 -->
@@ -164,7 +166,7 @@
 			<div class="nav-item">
 				<a href="index.jsp" class="nav-current-item">联系人管理</a>
 				<a href="logManagement.jsp">日志管理</a>
-				<a href="userInfo.jsp">我的信息</a>
+				<a href="userInfo.jsp">我的信息${user.userID}</a>
 			</div>
 			</div>
 	</nav>

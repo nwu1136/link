@@ -172,7 +172,7 @@ body {
 							<div class="form-group form-inline" style="margin: 2em 1em;">
 								<label for="captcha" class="col-sm-2 control-label">验证码</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="validateCode"
+									<input type="text" class="form-control" id="validateCode" name="validateCode"
 										placeholder="验证码" /> 
 								</div>
 								<span class="col-sm-2" style="margin-left:60px;"><img title="看不清？点击换一张呗"

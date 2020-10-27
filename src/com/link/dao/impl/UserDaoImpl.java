@@ -31,7 +31,7 @@ public class UserDaoImpl extends IBaseDaoImpl<User> implements IUserDao {
 
 	@Override
 	public User login(User user) throws Exception {
-		String sql = "select * from tb_admin where adminName=? and adminPassword=?";
+		String sql = "select * from tb_user where userName=? and userPassword=?";
 		Object[] params = { user.getUserName(), user.getUserPassword() };
 
 		List<User> userList = select(sql, params);

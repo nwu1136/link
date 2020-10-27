@@ -36,6 +36,7 @@ public class MD5 {
 
 	public static void main(String[] args) {
 		// 123456 e10adc3949ba59abbe56e057f20f883e
+		// a@123456 021035fc653a80078840586d7720483c
 		System.out.println(getStrMD5("a@123456"));
 	}
 }

@@ -17,7 +17,7 @@ import com.link.entity.User;
 import com.link.service.IUserService;
 import com.link.service.impl.UserServiceImpl;
 
-@WebServlet("/user/login")
+@WebServlet("/login")
 public class UserLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,7 +47,7 @@ public class UserLoginServlet extends HttpServlet {
 			return;
 		}
 
-		String userName = req.getParameter("username");
+		String userName = req.getParameter("userName");
 		String userPassword = req.getParameter("userPassword");
 
 		// 验证用户名或密码是否为空（前端已过滤）
@@ -74,6 +74,9 @@ public class UserLoginServlet extends HttpServlet {
 
 		if (user != null && user.getUserID() > 0) {
 			logger.info("用户名和密码正确");
+			out.print("<script type='text/javascript'>");
+			out.print("location.href='index.jsp';");
+			out.print("</script>");
 		} else {
 			logger.info("登录失败：用户名或密码错误！");
 			out.print("<script type='text/javascript'>");
@@ -84,8 +87,7 @@ public class UserLoginServlet extends HttpServlet {
 		}
 
 		HttpSession session = req.getSession();
-		session.setAttribute("userID", user.getUserID());
-		session.setAttribute("userName", user.getUserName());
+		session.setAttribute("user", user);
 
 	}
 
