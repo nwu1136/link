@@ -43,7 +43,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><p class="navbar-text">
-								<span>当前用户：</span><a href="adminInfo.jsp">${adminName}</a>
+								<span>当前管理员：</span><a href="adminInfo.jsp">${adminName}</a>
 							</p></li>
 					</ul>
 				</div>
