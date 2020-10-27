@@ -205,7 +205,8 @@
 							<span>姚登方</span>
 						</div> -->
 						<div class="col-md-2">
-								  <div id="oDiv"></div>
+								<!--   <div id="oDiv"></div> -->
+								  <img alt="" src="images/ydf.JPG" width="85%" style="border:2px solid skyblue; border-radius:50%; margin-top:20px;">
 							<a href="javascript:;" class="file">更换头像
 								<input type="file" name="" id="oInput">
 							</a>
